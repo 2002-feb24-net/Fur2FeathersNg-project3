@@ -27,13 +27,7 @@ steps:
     customCommand: 'run build-prod'
 
 
-- task: Npm@1
-  displayName: 'npm custom'
-  inputs:
-    command: custom
-    workingDir: ./fur2feathers
-    verbose: false
-    customCommand: 'run test'
+
 
 
 - task: ArchiveFiles@2

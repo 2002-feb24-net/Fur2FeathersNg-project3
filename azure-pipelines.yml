@@ -22,7 +22,7 @@ steps:
   displayName: build
   inputs:
     command: custom
-    workingDir: .
+    workingDir: ./fur2feathers
     verbose: false
     customCommand: 'run build-prod'
 
@@ -31,7 +31,7 @@ steps:
   displayName: 'npm custom'
   inputs:
     command: custom
-    workingDir: .
+    workingDir: ./fur2feathers
     verbose: false
     customCommand: 'run test'
 

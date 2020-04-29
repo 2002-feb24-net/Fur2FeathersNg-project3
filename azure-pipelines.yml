@@ -26,16 +26,6 @@ steps:
     verbose: false
     customCommand: 'run build-prod'
 
-
-
-
-
-- task: ArchiveFiles@2
-  displayName: 'Archive files'
-  inputs:
-    rootFolderOrFile: './dist/f2f'
-    includeRootFolder: false
-
 - task: PublishBuildArtifacts@1
   displayName: 'Publish artifacts: drop'
 

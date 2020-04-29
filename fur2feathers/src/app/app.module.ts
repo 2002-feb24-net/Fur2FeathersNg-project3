@@ -11,6 +11,8 @@ import { BuyersGuideComponent } from './buyers-guide/buyers-guide.component';
 import { VetsComponent } from './vets/vets.component';
 import { FaqsComponent } from './faqs/faqs.component';
 import { LogInComponent } from './log-in/log-in.component';
+import { BlogsComponent } from './blogs/blogs.component';
+import { NotfoundComponent } from './notfound/notfound.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { LogInComponent } from './log-in/log-in.component';
     BuyersGuideComponent,
     VetsComponent,
     FaqsComponent,
-    LogInComponent
+    LogInComponent,
+    BlogsComponent,
+    NotfoundComponent
   ],
   imports: [
     BrowserModule,

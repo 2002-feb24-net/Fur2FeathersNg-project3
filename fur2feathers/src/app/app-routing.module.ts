@@ -8,15 +8,24 @@ import { LogInComponent } from './log-in/log-in.component';
 import { VetsComponent } from './vets/vets.component';
 import { PlansComponent } from './plans/plans.component';
 import { BuyersGuideComponent } from './buyers-guide/buyers-guide.component';
+import { BlogsComponent } from './blogs/blogs.component';
+import { NotfoundComponent } from './notfound/notfound.component';
+
 
 const routes : Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'faqs', component: FaqsComponent },
   { path: 'contact', component: ContactComponent },
-  { path: 'login-in', component: LogInComponent },
+  { path: 'log-in', component: LogInComponent },
   { path: 'vets', component: VetsComponent },
   { path: 'plans', component: PlansComponent },
-  { path: 'buyers-guide', component: BuyersGuideComponent }
+  { path: 'buyers-guide', component: BuyersGuideComponent },
+  { path: 'blogs', component: BlogsComponent },
+  { path: '',redirectTo: 'home', pathMatch: 'full' },
+  { path: '**', component: NotfoundComponent}
+
+
+
 ]
 
 @NgModule({

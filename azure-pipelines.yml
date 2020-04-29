@@ -3,6 +3,10 @@ trigger:
 
 pr:
 - master
+
+variables:
+  appDir: fur2feathers
+
 jobs: 
 - job: build
   pool:
@@ -58,9 +62,14 @@ jobs:
     inputs:
       SonarCloud: 'f2f-ng'
       organization: '2002-feb24-net'
-      scannerMode: 'MSBuild'
-      projectKey: '2002-feb24-net_Fur2FeathersNg-project3'
-      projectName: 'f2f-ng'
+      scannerMode: CLI
+      configMode: manual
+      cliProjectKey: '2002-feb24-net_Fur2FeathersNg-project3'
+      cliProjectName: 'f2f-ng'
+      cliSources: $(appDir)/src
+      extraProperties: |
+          sonar.coverage.exclusions=**/*.spec.ts
+          sonar.typescript.lcov.reportPaths=$(appDir)/coverage/$(appDir)/lcov.info
 
   - script: npx ng test --browsers ChromeHeadless --no-watch --code-coverage
     workingDirectory: ./fur2feathers

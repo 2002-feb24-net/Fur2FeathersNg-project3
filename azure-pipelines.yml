@@ -26,15 +26,13 @@ steps:
     verbose: false
     customCommand: 'run build-prod'
 
-
-
-
-
 - task: ArchiveFiles@2
-  displayName: 'Archive files'
   inputs:
-    rootFolderOrFile: './dist/f2f'
-    includeRootFolder: false
+    rootFolderOrFile: '$(Build.BinariesDirectory)'
+    includeRootFolder: true
+    archiveType: 'zip'
+    archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+    replaceExistingArchive: true
 
 - task: PublishBuildArtifacts@1
   displayName: 'Publish artifacts: drop'

@@ -1,0 +1,44 @@
+@import '../../assets/css/mixins';
+
+#contact-container {
+    display: flex;
+    flex-direction: column;
+    @include small-screen-landscape {
+        flex-direction: row;
+    }
+}
+
+#contact-form {
+    margin-top: 2vh;
+    width: 80vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    form {
+        width:80%;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;;
+    }
+}
+
+#contact-address {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    > div {
+        width: 35vw;
+        max-width: 30%;
+    }
+}
+
+#contact-form-buttons {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    width: 10vw;
+}
+
+textarea {
+    height: 10em;
+}

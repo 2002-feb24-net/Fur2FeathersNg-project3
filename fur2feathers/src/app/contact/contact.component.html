@@ -1,1 +1,144 @@
-<p>contact works!</p>
+<div id="contact-container">
+    <app-side-bar></app-side-bar>
+    <div id="contact-form">
+        <p>Please complete this form and a customer service agent will contact you within three business days.</p>
+        <form (ngSubmit)="onSubmit()" #contactForm="ngForm">
+            <h3>Customer information</h3>
+            <!-- name -->
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name"
+                   required
+                   [(ngModel)]="model.name" name="name"
+                   #name="ngModel">
+                <div [hidden]="name.valid || name.pristine"
+                    class="alert alert-danger">
+                Name is required
+                </div>
+            </div>
+            
+    
+            <!-- phone -->
+            <div class="form-group">
+                <label for="phone">Phone</label>
+                <input type="text" class="form-control" id="phone"
+                    required
+                    [(ngModel)]="model.phone" name="phone"
+                    #phone="ngModel">
+                <div [hidden]="phone.valid || phone.pristine"
+                    class="alert alert-danger">
+                    Phone is required
+                </div>
+            </div>
+            
+            <!-- email -->
+            <div class="form-group">
+                <label for="email">E-mail</label>
+                <input type="text" class="form-control" id="email"
+                    required
+                    [(ngModel)]="model.email" name="email"
+                    #email="ngModel">
+                <div [hidden]="email.valid || email.pristine"
+                    class="alert alert-danger">
+                    E-mail is required
+                </div>
+            </div>
+            
+            <!-- cust address info -->
+            <div id="contact-address">
+                <!-- State -->
+                <div class="form-group">
+                    <label for="state">State</label>
+                    <input type="text" class="form-control" id="state"
+                        required
+                        [(ngModel)]="model.state" name="state"
+                        #state="ngModel">
+                    <div [hidden]="state.valid || state.pristine"
+                        class="alert alert-danger">
+                        State is required
+                    </div>
+                </div>
+        
+                <!-- zip -->
+                <div class="form-group">
+                    <label for="zip">Zip-Code</label>
+                    <input type="text" class="form-control" id="zip"
+                        required
+                        [(ngModel)]="model.zip" name="zip"
+                        #zip="ngModel">
+                    <div [hidden]="zip.valid || zip.pristine"
+                        class="alert alert-danger">
+                        Zip-code is required
+                    </div>
+                </div>
+        
+                <!-- contact_method -->
+                <div class="form-group">
+                    <label for="contact_method">Contact Method</label>
+                    <select class="form-control" id="contact_method"
+                        required
+                        [(ngModel)]="model.contact_method" name="contact_method"
+                        #power="ngModel">
+                    <option *ngFor="let method of contact_methods" [value]="method">{{method}}</option>
+                    </select>
+                </div>
+            </div>
+            
+            <h3>Pet Information</h3>
+            <!-- pet_name:  -->
+            <div class="form-group">
+                <label for="pet_name">Pet Name</label>
+                <input type="text" class="form-control" id="pet_name"
+                    [(ngModel)]="model.pet_name" name="pet_name"
+                    #pet_name="ngModel">
+            </div>
+    
+            <!-- pet_species:  -->
+            <div class="form-group">
+                <label for="pet_species">Pet species</label>
+                <input type="text" class="form-control" id="pet_species"
+                    [(ngModel)]="model.pet_species" name="pet_species"
+                    #pet_species="ngModel">
+            </div>
+    
+            <!-- pet_age:  -->
+            <div class="form-group">
+                <label for="pet_age">Pet age</label>
+                <input type="number" class="form-control" id="pet_age"
+                    [(ngModel)]="model.pet_age" name="pet_age"
+                    #pet_age="ngModel">
+            </div>
+    
+            <!-- subject:  -->
+            <div class="form-group">
+                <label for="subject">E-mail subject</label>
+                <select class="form-control" id="subject"
+                required
+                [(ngModel)]="model.subject" name="subject"
+                #power="ngModel">
+                <option *ngFor="let subject of email_subjects" [value]="subject">{{subject}}</option>
+                </select>
+            </div>
+    
+            <!-- text:  -->
+            <div class="form-group">
+                <label for="text">Email text</label>
+                <textarea type="text" class="form-control" id="text"
+                    required
+                    [(ngModel)]="model.text" name="text"
+                    #text="ngModel"></textarea> 
+                <div [hidden]="text.valid || text.pristine"
+                    class="alert alert-danger">
+                    Text is required
+                </div>
+            </div>
+    
+        </form>
+        <div id="contact-form-buttons">
+            <button type="submit" class="btn btn-success" [disabled]="!contactForm.form.valid">Submit</button>
+            <button type="reset" class="btn btn-success" (click)="contactForm.resetForm()">Cancel</button>
+        </div>
+        
+    </div>
+
+</div>

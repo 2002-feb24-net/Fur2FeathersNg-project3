@@ -13,6 +13,8 @@ import { FaqsComponent } from './faqs/faqs.component';
 import { LogInComponent } from './log-in/log-in.component';
 import { BlogsComponent } from './blogs/blogs.component';
 import { NotfoundComponent } from './notfound/notfound.component';
+import { HttpClientModule } from '@angular/common/http';
+import { DataAccessService } from './data-access.service';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,10 @@ import { NotfoundComponent } from './notfound/notfound.component';
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [
+    DataAccessService,
+    HttpClientModule
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

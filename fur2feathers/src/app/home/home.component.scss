@@ -1,0 +1,101 @@
+@import '../../assets/css/mixins';
+
+#app-home-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    @include medium-screen-landscape {
+        display:block;
+    }
+}
+
+.home-grids {
+    padding: 1em;
+    border: .4em solid black;
+}
+
+.home-row {
+    margin-top: 3vh;
+    display: flex;
+    flex-direction: column;
+    @include medium-screen-landscape {
+        flex-direction: row;
+    }
+    
+}
+
+.column {
+    margin-left:1vw;
+    display: flex;
+    flex-direction: column;
+}
+
+#row-2 {
+    margin-bottom: 1vh;
+}
+
+#home-logo {
+    height:20vh;
+    width:80vw;
+    @include medium-screen-landscape {
+        width: 20vw;
+    }
+}
+
+#contact-info {
+    margin-top: 3vh;
+    width: 80vw;
+    @include medium-screen-landscape {
+        width: 20vw;
+    }
+}
+
+a {
+    font-size:2vh;
+    @include medium-screen-landscape {
+        font-size: 3vh
+    }
+}
+
+#covered-animals {
+    text-align: center;
+    margin-left:10vw;
+    width: 50vw;
+    height: auto;
+    @include medium-screen-landscape {
+        height: 60vh;
+    }
+}
+#covered-animals-list {
+    text-align: left;
+    padding: 1em;
+    line-height: .75em;
+    max-height: 80%;
+    @include medium-screen-landscape {
+        line-height: .5em;
+    }
+}
+
+#buyers-guide-prompt {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    width: 80vw;
+    height: 30vh;
+    margin-left: 1em;
+    @include medium-screen-landscape {
+        width:20vw;
+    }
+}
+
+
+#plans {
+    margin-left:7vw;
+    height: 30vh;
+    width: 65vw;
+    text-align: center;
+    h2 {
+        margin: 0;
+    }
+}

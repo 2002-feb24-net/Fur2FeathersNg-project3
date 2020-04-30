@@ -88,21 +88,21 @@ stages:
           - task: DockerCompose@0
             inputs:
               containerregistrytype: 'Container Registry'
-              dockerComposeFile: 'docker-compose.prod.yml'
+              dockerRegistryEndpoint: 'jhbui1'
+              dockerComposeFile: '**/docker-compose.prod.yml'
               action: 'Build services'
-            displayName: docker-compose build
-
+            displayName: docker build
           - task: DockerCompose@0
             inputs:
               containerregistrytype: 'Container Registry'
-              dockerRegistryEndpoint: 'dockerhub-nicholasescalona'
-              dockerComposeFile: 'docker-compose.prod.yml'
+              dockerRegistryEndpoint: 'jhbui1'
+              dockerComposeFile: '**/docker-compose.prod.yml'
               action: 'Push services'
-            displayName: docker-compose push
+            displayName: docker push
 
           - task: AzureWebAppContainer@1
             inputs:
-              azureSubscription: 'Pay-As-You-Go(0518cd5b-d389-4983-9496-cdcae31dcc60)'
-              appName: '2002-ng-notes-client-docker'
+              azureSubscription: 'Azure subscription 1 (0331d11f-08e8-4a46-91f1-7c02b4a66c26)'
+              appName: 'fur2feathers'
               multicontainerConfigFile: 'docker-compose.prod.yml'
-            displayName: azure app service deploy
+            displayName: app service deploy

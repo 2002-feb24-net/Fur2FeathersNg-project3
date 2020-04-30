@@ -1,0 +1,58 @@
+@import '../../assets/css/mixins';
+
+#plans-container {
+    display: flex;
+    flex-direction: column;
+    @include medium-screen-landscape {
+        flex-direction: row;
+    }
+    text-align: center;
+}
+
+#plans-content {
+    margin-left: 5vw;
+}
+
+.plan-border {
+    border: .4em solid black;
+    // background-color: grey;
+}
+
+#row-1 {
+    display: flex;
+    flex-direction: column;
+    @include medium-screen-landscape {
+        flex-direction: row;
+    }
+    #plan-2 {
+        margin-left: 1vw;
+    }
+}
+
+#row-2 {
+    text-align: left;
+}
+
+#row-2 > div {
+    width: 62vw;
+    height: 40vh;
+    margin-top: 1vh;
+    margin-bottom:1vh;
+    @include small-screen-landscape {
+        height: 30vh;
+    }
+    @include medium-screen-landscape {
+        height: 20vh;
+    }
+
+
+}
+
+#plans-links {
+    a {
+        margin-left: 1vw;
+        text-decoration: underline;
+        font-weight: bold;
+    }
+    margin-bottom: 3vh;
+}

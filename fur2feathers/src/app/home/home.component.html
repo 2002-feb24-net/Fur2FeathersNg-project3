@@ -1,55 +1,36 @@
+
 <div id="app-home-container" class="app-container">
-    <div id="row-1" class="home-row">
-        <div class="column">
-            <div id="home-logo" class="home-grids logo">
-                <img src="https://drive.google.com/a/uci.edu/uc?export=download&id=19cI2MxjRMhadJPHVGOaFgAe4HDnGVewF" width=100% height=100%>
-            </div>
-            <div id="contact-info" class="home-grids">
-                <h3>Customer Service</h3>
-                <p>888-555-1234</p>
-                <br/>
-                <h3>Available</h3>
-                <p>Monday-Friday</p>
-                <p>6:00AM-6:00PM EST</p>
-                <p>Saturday-Sunday</p>
-                <p>10:00AM-6:00PM EST</p>
+    <app-side-bar></app-side-bar>
+    <div id="home-content">
+        <div id="row-1" class="home-row">
+            <div id="covered-animals">
+                <h2>Some of the Animals We Cover</h2>
+                <div id="covered-animals-list" class="home-grids">
+                    <p>Amphibians:</p>
+                    <p>Axolotls White Tree Frogs</p>
+                    <p>Red-Eyed Tree Frogs</p>
+                    <p>Yellow and Black Dart Frogs</p>
+                    <br/>
+                    <p>Reptiles:</p>
+                    <p>Tortoises Turtles Chameleons Lizards</p>
+                    <p>Iguanas Geckos Snakes</p>
+                    <br/>
+                    <p>Mammals:</p>
+                    <p>Chinchillas Mice Ferrets Potbellies pigs</p>
+                    <p>Rats Goats Gerbils Hedgehogs</p>
+                    <p>Guinea pigs Rabbits Hamsters Sugar gliders</p>
+                    <br/>
+                    <p>Birds:</p>
+                    <p>Budgerigars Finches Parrots Love Birds</p>
+                    <p>Cockatiels Cockatoos</p>
+                </div>
+                <h4>Don't see your pet? Call our customer service representatives to find out if your pet is covered!</h4>
             </div>
         </div>
-      
-        <div id="covered-animals">
-            <h2>Some of the Animals We Cover</h2>
-            <div id="covered-animals-list" class="home-grids">
-                <p>Amphibians:</p>
-                <p>Axolotls White Tree Frogs</p>
-                <p>Red-Eyed Tree Frogs</p>
-                <p>Yellow and Black Dart Frogs</p>
-                <br/>
-                <p>Reptiles:</p>
-                <p>Tortoises Turtles Chameleons Lizards</p>
-                <p>Iguanas Geckos Snakes</p>
-                <br/>
-                <p>Mammals:</p>
-                <p>Chinchillas Mice Ferrets Potbellies pigs</p>
-                <p>Rats Goats Gerbils Hedgehogs</p>
-                <p>Guinea pigs Rabbits Hamsters Sugar gliders</p>
-                <br/>
-                <p>Birds:</p>
-                <p>Budgerigars Finches Parrots Love Birds</p>
-                <p>Cockatiels Cockatoos</p>
+        <div id="row-2" class="home-row">
+            <div id="plans" class="home-grids">
+                <h2>Our Plans</h2>
             </div>
-            <h4>Don't see your pet? Call our customer service representatives to find out if your pet is covered!</h4>
         </div>
     </div>
-    <div id="row-2" class="home-row">
-        <div id="buyers-guide-prompt" class="home-grids">
-            <a routerLink="/buyers-guide">Need more information on <br/>
-                how pet insurance works <br/> and what plan might be <br/>
-                right for you? Visit our <br/> Buyer's guide
-            </a>
-        </div>
-        <div id="plans" class="home-grids">
-            <h2>Our Plans</h2>
-        </div>
-    </div>
-   
 </div>

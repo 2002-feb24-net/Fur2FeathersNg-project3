@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -13,8 +14,9 @@ import { FaqsComponent } from './faqs/faqs.component';
 import { LogInComponent } from './log-in/log-in.component';
 import { BlogsComponent } from './blogs/blogs.component';
 import { NotfoundComponent } from './notfound/notfound.component';
-import { HttpClientModule } from '@angular/common/http';
+import { SideBarComponent } from './side-bar/side-bar.component';
 import { DataAccessService } from './data-access.service';
+import { PlanInfoComponent } from './plan-info/plan-info.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { DataAccessService } from './data-access.service';
     FaqsComponent,
     LogInComponent,
     BlogsComponent,
-    NotfoundComponent
+    NotfoundComponent,
+    SideBarComponent,
+    PlanInfoComponent
   ],
   imports: [
     BrowserModule,

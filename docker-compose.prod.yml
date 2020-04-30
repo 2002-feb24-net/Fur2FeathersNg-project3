@@ -1,0 +1,14 @@
+version: '3.7'
+
+services:
+
+  web:
+    build: fur2feathers
+    image: jhbui1/f2f-ng:1.0
+    ports:
+      - 80:80
+    networks:
+      - default
+
+networks:
+  default:

@@ -1,7 +1,14 @@
-#faqs-links {
-    margin-top: auto;
+@import '../../assets/css/mixins';
+
+#faqs-content {
     display: flex;
-    width: 15vw;
-    font-size: large;
-    justify-content: space-between;
+    flex-direction: column;
+    width: 80vw;
+    align-items: center;
+    #faqs-links {
+        margin-top: auto;
+        display: flex;
+        font-size: large;
+        justify-content: space-between;
+    }
 }

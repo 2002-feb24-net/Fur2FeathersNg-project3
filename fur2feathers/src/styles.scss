@@ -4,3 +4,11 @@
 * {
     box-sizing: border-box;
 }
+
+.app-container {
+    display: flex;
+    flex-direction: column;
+    @include small-screen-landscape {
+        flex-direction: row;
+    }
+}

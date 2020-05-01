@@ -1,7 +1,14 @@
-<div id="faqs-container">
+<div class="app-container">
     <app-side-bar></app-side-bar>
-    <div id="faqs-links" >
-        <a>Ready to purchase coverage? Create an account</a>
-        <a>Need more information? Request a Quote</a>
+    <div id="faqs-content">
+        <div  class="q-and-a" *ngFor="let faq of faqs">
+            <label>{{faq.question}}</label>
+            <p (click)="showOrHide()">{{faq.answer}}</p>
+        </div>
+        <div id="faqs-links" >
+            <a>Ready to purchase coverage? Create an account</a>
+            <a>Need more information? Request a Quote</a>
+        </div>
     </div>
+
 </div>

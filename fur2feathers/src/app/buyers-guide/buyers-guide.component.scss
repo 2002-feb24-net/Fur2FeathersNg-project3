@@ -1,0 +1,26 @@
+#bg-content {
+    margin-top: 3vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80vw;
+    margin-left: 2vw;
+    #guides {
+        text-align: left;
+        label {
+            margin-bottom: 1vh;
+        }
+        p {
+            border: .4em solid black;
+            margin-bottom: 4vh;
+        }
+    }
+   
+    #bg-links {
+        width:80%;
+        margin-top: auto;
+        display: flex;
+        font-size: large;
+        justify-content: space-between;
+    }
+}

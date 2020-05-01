@@ -1,9 +1,11 @@
 <div class="app-container">
     <app-side-bar></app-side-bar>
     <div id="faqs-content">
-        <div  class="q-and-a" *ngFor="let faq of faqs">
-            <label>{{faq.question}}</label>
-            <p (click)="showOrHide()">{{faq.answer}}</p>
+        <div  class="q-and-a" *ngFor="let faq of faqs;let i=index">
+            <label style="cursor: pointer;" (click)="showOrHide($event)">{{i+1}}. {{faq.question}}
+                <p>{{faq.answer}}</p>
+            </label>
+            
         </div>
         <div id="faqs-links" >
             <a>Ready to purchase coverage? Create an account</a>

@@ -10,7 +10,9 @@ import { PlansComponent } from './plans/plans.component';
 import { BuyersGuideComponent } from './buyers-guide/buyers-guide.component';
 import { BlogsComponent } from './blogs/blogs.component';
 import { NotfoundComponent } from './notfound/notfound.component';
-
+import { SubmitClaimComponent } from './submit-claim/submit-claim.component';
+import { MyProfileComponent } from './my-profile/my-profile.component';
+import { AboutUsComponent } from './about-us/about-us.component';
 
 const routes : Routes = [
   { path: '',redirectTo: 'home', pathMatch: 'full' },
@@ -22,6 +24,9 @@ const routes : Routes = [
   { path: 'plans', component: PlansComponent },
   { path: 'buyers-guide', component: BuyersGuideComponent },
   { path: 'blogs', component: BlogsComponent },
+  { path: 'about-us', component: AboutUsComponent },
+  { path: 'submit-claim', component: SubmitClaimComponent},
+  { path: 'my-profile', component: MyProfileComponent },
   // { path: 'implicit/callback' },
   { path: '**', component: NotfoundComponent}
 

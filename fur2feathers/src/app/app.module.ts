@@ -22,6 +22,9 @@ import { NotfoundComponent } from './notfound/notfound.component';
 import { SideBarComponent } from './side-bar/side-bar.component';
 import { DataAccessService } from './data-access.service';
 import { PlanInfoComponent } from './plan-info/plan-info.component';
+import { AboutUsComponent } from './about-us/about-us.component';
+import { MyProfileComponent } from './my-profile/my-profile.component';
+import { SubmitClaimComponent } from './submit-claim/submit-claim.component';
 
 const config = {
   clientId: '0oaarkz7sehzUbEAk4x6',
@@ -45,7 +48,10 @@ const config = {
     BlogsComponent,
     NotfoundComponent,
     SideBarComponent,
-    PlanInfoComponent
+    PlanInfoComponent,
+    AboutUsComponent,
+    MyProfileComponent,
+    SubmitClaimComponent
   ],
   imports: [
     BrowserModule,

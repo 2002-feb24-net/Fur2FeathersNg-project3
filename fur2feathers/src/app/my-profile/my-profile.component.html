@@ -1,0 +1,16 @@
+<div class="app-container">
+    <app-side-bar></app-side-bar>
+    <div id="my-profile-content">
+        <div id="profile-tabs">
+            <div id="customer-tab" (click)="loadProfile(name)" class="profile-tab">
+                <p>{{name}}</p>
+            </div>
+            <div class="pet-profiles profile-tab" *ngFor="let pet of pet_profiles">
+                <p (click)="loadProfile(pet.name)">{{pet.name}}</p>
+            </div>
+        </div>
+        <div id="profile-main">
+
+        </div>
+    </div>
+</div>

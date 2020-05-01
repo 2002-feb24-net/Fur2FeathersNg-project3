@@ -13,6 +13,7 @@ import { NotfoundComponent } from './notfound/notfound.component';
 
 
 const routes : Routes = [
+  { path: '',redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'faqs', component: FaqsComponent },
   { path: 'contact', component: ContactComponent },
@@ -22,15 +23,12 @@ const routes : Routes = [
   { path: 'buyers-guide', component: BuyersGuideComponent },
   { path: 'blogs', component: BlogsComponent },
   // { path: 'implicit/callback' },
-  { path: '',redirectTo: 'home', pathMatch: 'full' },
   { path: '**', component: NotfoundComponent}
-
-
 
 ]
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes,{useHash:true})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

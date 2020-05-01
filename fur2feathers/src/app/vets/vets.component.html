@@ -45,6 +45,16 @@
         <div id="vet-form-buttons">
             <button type="submit" class="btn btn-success" (click)="onSubmit()" [disabled]="!vetForm.form.valid">Get Results</button>
         </div>
+        <div id="vets-search-results" *ngIf="searchBegan">
+            <div *ngIf="results?.length==0" class="alert alert-danger">
+                No Vets Found
+            </div>
+            <div class="vet-info" *ngFor="let vet of results">
+                <h2>{{vet.name}}</h2>
+                <p>Services: {{vet.services}}</p>
+                <p>Call <span style="color: red;">{{vet.phone</span> to make an appointment</p>
+            </div>
+        </div>
         <div id="vets-links">
             <a>Ready to purchase coverage? Create an account</a>
             <a>Need more information? Request a Quote</a>

@@ -41,6 +41,16 @@
            }
        }
    }
+
+   #vets-search-results {
+        border: .4em solid black;
+       width:80%;
+       height:50%;
+       max-height:55%;
+       margin-top:2vh;
+       overflow: scroll;
+   }
+
    #vets-links {
        margin-top: auto;
        margin-bottom: 1vh;

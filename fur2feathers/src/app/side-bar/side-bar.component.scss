@@ -15,6 +15,10 @@
     margin-left:1vw;
     display: flex;
     flex-direction: column;
+    h3 {
+        margin-top:0;
+        margin-bottom: .5vh;
+    }
 }
 #contact-info {
     margin-top: 3vh;

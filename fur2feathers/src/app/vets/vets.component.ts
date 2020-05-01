@@ -10,6 +10,9 @@ export class VetsComponent implements OnInit {
   vet_zip:string = ""; 
   vet_state:string ="";
   vet_city:string = ""; 
+  searchBegan:boolean = false;
+  results:string[] = [];
+
   constructor() { }
 
   ngOnInit(): void {
@@ -17,6 +20,8 @@ export class VetsComponent implements OnInit {
 
   onSubmit() {
     console.log(`${this.sel_species} ${this.vet_zip} ${this.vet_state} ${this.vet_state}`);
+    console.log(this.results.length)
+    this.searchBegan=true;
   }
 
 }

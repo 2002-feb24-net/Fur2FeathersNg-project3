@@ -1,1 +1,55 @@
-<p>vets works!</p>
+<div id="vet-container">
+    <app-side-bar></app-side-bar>
+    <div id="vet-form">
+        <h3>Find an exotic animal veterinarian near you</h3>
+        <form (ngSubmit)="onSubmit()" #vetForm="ngForm">
+            <!-- especies -->
+            <div class="form-group">
+                <label for="species">Species</label>
+                <input type="text" class="form-control" id="species"
+                    required
+                    [(ngModel)]="sel_species" name="species"
+                    #species="ngModel">
+                  
+                <div [hidden]="species.valid || species.pristine"
+                    class="alert alert-danger">
+                    Species is required
+                </div>
+            </div>
+            <p>and</p>
+            <div id="location">
+                <!-- City -->
+                <div class="form-group">
+                    <label for="zip">Zip Code</label>
+                    <input type="zip" class="form-control" id="zip"
+                    [(ngModel)]="vet_zip" name="zip"
+                    #zip="ngModel">
+                </div>
+                <h3 style="font-weight: bold;">OR</h3>
+                <!-- City -->
+                <div class="form-group">
+                    <label for="city">City</label>
+                    <input type="city" class="form-control" id="city"
+                    [(ngModel)]="vet_city" name="city"
+                    #city="ngModel">
+                </div>
+                <!-- state -->
+                <div class="form-group">
+                <label for="state">State</label>
+                <input type="state" class="form-control" id="state"
+                [(ngModel)]="vet_state" name="password"
+                #state="ngModel">
+                </div>
+            </div>
+        </form>
+        <div id="vet-form-buttons">
+            <button type="submit" class="btn btn-success" (click)="onSubmit()" [disabled]="!vetForm.form.valid">Get Results</button>
+        </div>
+        <div id="vets-links">
+            <a>Ready to purchase coverage? Create an account</a>
+            <a>Need more information? Request a Quote</a>
+        </div>
+    </div>
+
+
+</div>

@@ -1,0 +1,57 @@
+@import '../../assets/css/mixins';
+
+#vet-container {
+    display: flex;
+    flex-direction: column;
+    @include small-screen-landscape {
+        flex-direction: row;
+    }
+}
+
+#vet-form {
+    margin-top: 2vh;
+    width: 80vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    a {
+        text-decoration: underline;
+        align-self: center;
+    }
+    h2 {
+        margin-top: 10vh;
+        font-size: 3vh;
+    }
+    form {
+        width:50%;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+   #location {
+       display: flex;
+       flex-direction: row;
+       flex-wrap: wrap;
+       
+       justify-content: space-between;
+       .form-group {
+           width: 25vw;
+           @include small-screen-landscape {
+               width: 25%;
+           }
+       }
+   }
+   #vets-links {
+       margin-top: auto;
+       margin-bottom: 1vh;
+       font-size: 1.5vh;
+       a {
+            margin-left: 1vw;
+       }
+       @include small-screen-landscape {
+           font-size: 3vh;
+       }
+    }
+}
+
+

@@ -1,16 +1,84 @@
 <div class="app-container">
     <app-side-bar></app-side-bar>
     <div id="my-profile-content">
-        <div id="profile-tabs">
-            <div id="customer-tab" (click)="loadProfile(name)" class="profile-tab">
+        <div id="my-profile-tabs">
+            <div id="customer-tab" (click)="loadProfile($event,name)" class="profile-tab">
                 <p>{{name}}</p>
             </div>
             <div class="pet-profiles profile-tab" *ngFor="let pet of pet_profiles">
-                <p (click)="loadProfile(pet.name)">{{pet.name}}</p>
+                <p (click)="loadProfile($event,pet.name)">{{pet.name}}</p>
             </div>
         </div>
         <div id="profile-main">
-
+            <form *ngIf="cust_profile" (ngSubmit)="onSubmit()" #custProfile="ngForm" >
+                <div class="form-group">
+                    <!-- name -->
+                    <label for="name">Name:</label>
+                    <input type="text" name="name" id="name" readonly [(ngModel)]="cust_info.name"
+                        #name="ngModel" class="form-control" required placeholder="Name">
+                    <div [hidden]="name.valid||name.pristine" class="alert alert-danger">
+                        Name is Required
+                    </div>
+                </div>
+                <div class="form-group" id="cust-address">
+                    <label for="address1">Address:</label>
+                    <!-- Addr line 1 -->
+                    <input type="text" name="address1" id="address1" readonly [(ngModel)]="cust_info.street"
+                    #address1="ngModel" class="form-control" required placeholder="Address line 1"/>
+                    <div [hidden]="address1.valid||address1.pristine" class="alert alert-danger">
+                        Street is Required
+                    </div>
+                    <!-- addre line 2 -->
+                    <input type="text" name="address2" id="address2" readonly [(ngModel)]="cust_info.addr2"
+                    #address2="ngModel" class="form-control" placeholder="Address line 2">
+                    <div id="city-state-zip">
+                        <!-- city -->
+                        <input style="flex-basis:3" type="text" name="city" id="city" readonly [(ngModel)]="cust_info.city"
+                        #city="ngModel" class="form-control" placeholder="City">
+                        <div [hidden]="city.valid||city.pristine" class="alert alert-danger">
+                            City is Required
+                        </div>
+                        <!-- state -->
+                        <input type="text" name="state" id="state" readonly [(ngModel)]="cust_info.state"
+                        #state="ngModel" class="form-control" placeholder="State">
+                        <div [hidden]="state.valid||state.pristine" class="alert alert-danger">
+                            State is Required
+                        </div>
+                        <!-- zip -->
+                        <input type="text" name="zip" id="zip" readonly [(ngModel)]="cust_info.zip"
+                        #zip="ngModel" class="form-control" placeholder="Zip">
+                        <div [hidden]="zip.valid||zip.pristine" class="alert alert-danger">
+                            Zip is Required
+                        </div>
+                    </div>
+                   
+                </div>
+                <div class="form-group">
+                    <!-- phone -->
+                    <label for="phone">Phone:</label>
+                    <input type="text" name="phone" id="phone" readonly [(ngModel)]="cust_info.phone"
+                        #phone="ngModel" class="form-control" required placeholder="Phone">
+                    <div [hidden]="phone.valid||phone.pristine" class="alert alert-danger">
+                        Phone is Required
+                    </div>
+                </div>
+                <div class="form-group">
+                    <!-- email -->
+                    <label for="email">Email:</label>
+                    <input type="text" name="email" id="email" readonly [(ngModel)]="cust_info.email"
+                        #email="ngModel" class="form-control" required placeholder="Email">
+                    <div [hidden]="email.valid||email.pristine" class="alert alert-danger">
+                        Email is Required
+                    </div>
+                </div>
+                <p style="text-decoration: underline;color:blue" (click)="allowEdits()">Edit profile information</p>
+                <button type="submit" class="btn btn-success" (click)="onSubmit()" [disabled]="!custProfile.form.valid">Update</button>
+            </form>
+            <form *ngIf="pet_profile" (ngSubmit)="onSubmit()" #petProfile="ngForm">
+                
+                <p style="text-decoration: underline;color:blue" (click)="allowEdits()">Edit profile information</p>
+                <button type="submit" class="btn btn-success" (click)="onSubmit()" [disabled]="!petProfile.form.valid">Update</button>
+            </form>
         </div>
     </div>
 </div>

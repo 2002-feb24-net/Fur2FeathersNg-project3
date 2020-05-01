@@ -9,15 +9,38 @@
         cursor: pointer;
     }
 
+    #my-profile-tabs {
+        margin-top: 2vh;
+    }
+
     .profile-tab {
         border: .4em solid black;
         padding: 0 .4em;
+        margin-bottom:.05em;
+        border-radius: .9em;
     }
 
     #profile-main {
         width:60vw;
         height:100%;
-        background: grey;
+        border: .4em solid black;
         margin-right: 10vw;
+        form {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            
+        }
+
+        #cust-address {
+
+        }
+
+        input {
+            width:80%;
+        }
     }
+
+
 }

@@ -43,7 +43,7 @@
 
 a,p {
     font-size:1.5vh;
-    @include medium-screen-landscape {
+    @include large-screen-landscape {
         font-size: 2vh
     }
 }

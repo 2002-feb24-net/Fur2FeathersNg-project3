@@ -1,4 +1,4 @@
-export class pet {
+export class Pet {
     constructor (
         public name: string,
         public species: string,

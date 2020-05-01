@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import {faq} from '../interfaces/faq';
+import {Faq} from '../interfaces/faq';
 
 @Component({
   selector: 'app-faqs',
@@ -9,13 +9,13 @@ import {faq} from '../interfaces/faq';
 })
 export class FaqsComponent implements OnInit {
 
-  faqs:faq[] = [];
+  faqs:Faq[] = [];
 
   constructor() { }
 
   initializeFaqs() {
     for(let i=0;i<5;i++){
-      let obj = new faq("lorem",`ipsumasdsadadssaLorem ipsum dolor sit amet consectetur adipisicing elit. Libero laboriosam quis possimus minima illum numquam in quos cumque, sunt consectetur ducimus velit tenetur omnis quibusdam eius quod modi! Dolorum, fugit!
+      let obj = new Faq("lorem",`ipsumasdsadadssaLorem ipsum dolor sit amet consectetur adipisicing elit. Libero laboriosam quis possimus minima illum numquam in quos cumque, sunt consectetur ducimus velit tenetur omnis quibusdam eius quod modi! Dolorum, fugit!
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur sed, a placeat voluptatem, magnam nesciunt quaerat doloremque vitae dolor rem quod quidem, nihil eaque error nisi nemo cum officiis nulla.`);
       this.faqs.push(obj)
     }

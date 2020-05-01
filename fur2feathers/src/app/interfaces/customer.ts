@@ -1,4 +1,4 @@
-export class customer {
+export class Customer {
     constructor (
         public name: string,
         public street: string,
@@ -8,6 +8,8 @@ export class customer {
         public zip: string,
         public phone: string,
         public email: string,
+        public username: string,
+        public password: string,
         public pets: number[]
     ) {}
 }

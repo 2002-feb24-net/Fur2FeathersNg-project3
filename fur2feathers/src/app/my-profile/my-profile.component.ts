@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
-import {pet} from '../interfaces/pet';
-import {customer} from '../interfaces/customer';
+import {Pet} from '../interfaces/pet';
+import {Customer} from '../interfaces/customer';
+import {Policy} from '../interfaces/policy';
 
 @Component({
   selector: 'app-my-profile',
@@ -11,21 +12,31 @@ import {customer} from '../interfaces/customer';
 export class MyProfileComponent implements OnInit {
 
   constructor() { }
-  name:string = "bui"
-  pet_profiles:pet[] = [];
+  name:string = ""
+  pet_profiles:Pet[] = [];
   cust_profile:boolean=true;
   pet_profile:boolean=false;
-  cust_info:customer=new customer("","","","","","","","",[]);
-  pet_info:pet =new pet("","","",0,"","","",[])
+  cust_info:Customer=new Customer("","","","","","","","","","",[]);
+  pet_info:Pet =new Pet("","","",0,"","","",[])
+  policyHeadElements:string[] = ["Covered Pet(s)","Policy","Policy Status"]
+  policies:Policy[] = [];
+
+  confirm_password:string="";
+  new_password:string="";
 
   ngOnInit(): void {
-    this.initPets();
+    this.initDummyData();
   }
 
-  initPets() {
+  initDummyData() {
+    this.name = "bui";
     for(let i=0;i<5;i++){
-      let obj = new pet("jon","","",0,"","","",[]);
+      let obj = new Pet("jon","","",0,"","","",[]);
       this.pet_profiles.push(obj);
+    }
+    for(let i=0;i<5;i++) {
+      let obj = new Policy("lorem","lorem","lorem");
+      this.policies.push(obj);
     }
   }
 
@@ -35,7 +46,8 @@ export class MyProfileComponent implements OnInit {
    * @param {string} name name corresponding to clicked profile tab
    */
   loadProfile(event:Event,name:string) {
-    if((<HTMLInputElement>event.target).classList.contains("customer-tab")) {
+    console.log((<HTMLInputElement>event.target).id);
+    if((<HTMLInputElement>event.target).id =="customer-tab") {
       this.cust_profile=true;
       this.pet_profile=false;
     } else {
@@ -59,4 +71,7 @@ export class MyProfileComponent implements OnInit {
     }
   }
 
+  changePwd() {
+
+  }
 }

@@ -7,65 +7,65 @@ pr:
 variables:
   appDir: fur2feathers
 stages: 
-- stage: build
-  jobs: 
-  - job: build
-    pool:
-      name: Azure Pipelines
-      vmImage: ubuntu-latest
-      demands:
-      - npm
-      - java
+# - stage: build
+#   jobs: 
+#   - job: build
+#     pool:
+#       name: Azure Pipelines
+#       vmImage: ubuntu-latest
+#       demands:
+#       - npm
+#       - java
 
-    steps:
-      - task: DockerCompose@0
-        inputs:
-          containerregistrytype: 'Container Registry'
-          dockerRegistryEndpoint: 'jhbui1'
-          dockerComposeFile: '**/docker-compose.prod.yml'
-          action: 'Build services'
+#     steps:
+#       - task: DockerCompose@0
+#         inputs:
+#           containerregistrytype: 'Container Registry'
+#           dockerRegistryEndpoint: 'jhbui1'
+#           dockerComposeFile: '**/docker-compose.prod.yml'
+#           action: 'Build services'
 
-  - job: test
+#   - job: test
 
-    pool:
-      vmImage: ubuntu-latest
+#     pool:
+#       vmImage: ubuntu-latest
 
-    steps:
+#     steps:
     
-    - task: Npm@1
-      displayName: 'npm install'
-      inputs:
-        workingDir: ./fur2feathers
-        verbose: false
+#     - task: Npm@1
+#       displayName: 'npm install'
+#       inputs:
+#         workingDir: ./fur2feathers
+#         verbose: false
     
-    - task: SonarCloudPrepare@1
-      inputs:
-        SonarCloud: 'f2f-ng'
-        organization: '2002-feb24-net'
-        scannerMode: CLI
-        configMode: manual
-        cliProjectKey: '2002-feb24-net_Fur2FeathersNg-project3'
-        cliProjectName: 'f2f-ng'
-        cliSources: $(appDir)/src
-        extraProperties: |
-            sonar.coverage.exclusions=**/*.spec.ts
-            sonar.typescript.lcov.reportPaths=$(appDir)/coverage/$(appDir)/lcov.info
+#     - task: SonarCloudPrepare@1
+#       inputs:
+#         SonarCloud: 'f2f-ng'
+#         organization: '2002-feb24-net'
+#         scannerMode: CLI
+#         configMode: manual
+#         cliProjectKey: '2002-feb24-net_Fur2FeathersNg-project3'
+#         cliProjectName: 'f2f-ng'
+#         cliSources: $(appDir)/src
+#         extraProperties: |
+#             sonar.coverage.exclusions=**/*.spec.ts
+#             sonar.typescript.lcov.reportPaths=$(appDir)/coverage/$(appDir)/lcov.info
 
-    - script: npx ng test --browsers ChromeHeadless --no-watch --code-coverage
-      workingDirectory: ./fur2feathers
-      continueOnError: true
-      displayName: ng test
-    - task: SonarCloudAnalyze@1
-      displayName: sonarcloud analysis run
+#     - script: npx ng test --browsers ChromeHeadless --no-watch --code-coverage
+#       workingDirectory: ./fur2feathers
+#       continueOnError: true
+#       displayName: ng test
+#     - task: SonarCloudAnalyze@1
+#       displayName: sonarcloud analysis run
 
-    - task: SonarCloudPublish@1
-      inputs:
-          pollingTimeoutSec: '300'
-      displayName: sonarcloud results build publish
+#     - task: SonarCloudPublish@1
+#       inputs:
+#           pollingTimeoutSec: '300'
+#       displayName: sonarcloud results build publish
 
 - stage: deploy
   condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
-  dependsOn: build
+  # dependsOn: build
 
   jobs:
 

@@ -21,7 +21,7 @@ const routes : Routes = [
   { path: 'plans', component: PlansComponent },
   { path: 'buyers-guide', component: BuyersGuideComponent },
   { path: 'blogs', component: BlogsComponent },
-  { path: 'implicit/callback' },
+  // { path: 'implicit/callback' },
   { path: '',redirectTo: 'home', pathMatch: 'full' },
   { path: '**', component: NotfoundComponent}
 

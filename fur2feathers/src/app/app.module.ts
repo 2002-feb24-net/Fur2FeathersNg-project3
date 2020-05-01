@@ -2,6 +2,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import {
+  OKTA_CONFIG,
+  OktaAuthModule,
+} from '@okta/okta-angular';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -18,6 +22,14 @@ import { NotfoundComponent } from './notfound/notfound.component';
 import { SideBarComponent } from './side-bar/side-bar.component';
 import { DataAccessService } from './data-access.service';
 import { PlanInfoComponent } from './plan-info/plan-info.component';
+
+const config = {
+  clientId: '0oaarkz7sehzUbEAk4x6',
+  issuer: 'https://https://dev-514746.okta.com/oauth2/default',
+  redirectUri: 'http://localhost:8080/implicit/callback',
+  scopes: ['openid', 'profile', 'email'],
+  pkce: true
+};
 
 @NgModule({
   declarations: [
@@ -38,9 +50,11 @@ import { PlanInfoComponent } from './plan-info/plan-info.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    OktaAuthModule,
     FormsModule
   ],
   providers: [
+    { provide: OKTA_CONFIG, useValue: config },
     DataAccessService,
     HttpClientModule
   ],

@@ -1,3 +1,5 @@
+import { Claim } from './claim';
+
 export class Pet {
     constructor (
         public name: string,
@@ -7,6 +9,7 @@ export class Pet {
         public sex: string,
         public policy: string,
         public status: string,
-        public claims_history: number[]
+        public img_url: string,
+        public claims_history: Claim[]
     ) {}
 }

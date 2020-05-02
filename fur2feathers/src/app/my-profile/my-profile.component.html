@@ -2,7 +2,7 @@
     <app-side-bar></app-side-bar>
     <div id="my-profile-content">
         <div id="my-profile-tabs">
-            <div class="profile-tab">
+            <div class="profile-tab" style="margin-bottom: 2vh;">
                 <p id="customer-tab" (click)="loadProfile($event,name)">{{name}}</p>
             </div>
             <div class="pet-profiles profile-tab" *ngFor="let pet of pet_profiles">
@@ -116,10 +116,65 @@
                 </form>
                 
             </form>
-            <form *ngIf="pet_profile" (ngSubmit)="onSubmit()" #petProfile="ngForm">
-                <p style="text-decoration: underline;color:blue" (click)="allowEdits()">Edit profile information</p>
-                <button type="submit" class="btn btn-success" (click)="onSubmit()" [disabled]="!petProfile.form.valid">Update</button>
-            </form>
+                <div *ngIf="pet_profile" id="pet-profile">
+                    <div id="pet-overview">
+                        <div id="pet-img-container" (click)=imgUrlPrompt()>
+                            <img *ngIf="pet_info.img_url!==''"style="max-width: 100%;max-height: 80%;" id="pet-img" [src]="pet_info.img_url">
+                            <h4 *ngIf="pet_info.img_url==''">Upload an image.</h4>
+                            <form *ngIf="pet_info.img_url==''" (ngSubmit)="submitImg()" #petImg="ngForm">
+                                <div class="form-group">
+                                    <label for="img-url">Image URL:</label>
+                                    <input type="text" required name="img-url" id="img-url" [(ngModel)]="pet_info.img_url">
+                                </div>
+                                <button type="submit" class="btn btn-success" (click)="submitImg()" [disabled]="!petImg.form.valid">Update</button>
+                            </form>
+                        </div>
+                        <div id="pet-details" style="margin-left: 2vw;">
+                            <div class="pet-detail-group">
+                                <h4>Name:</h4>
+                                <div class="detail-field">{{pet_info.name}}</div>
+                            </div>
+                            <div class="pet-detail-group">
+                                <h4>Species:</h4>
+                                <div class="detail-field">{{pet_info.species}}</div>
+                            </div>
+                            <div class="pet-detail-group">
+                                <h4>Color(s):</h4>
+                                <div class="detail-field">{{pet_info.color}}</div>
+                            </div>
+                            <div class="pet-detail-group">
+                                <h4>Age:</h4>
+                                <div class="detail-field">{{pet_info.age}}</div>
+                            </div>
+                            <div class="pet-detail-group">
+                                <h4>Sex:</h4>
+                                <div class="detail-field">{{pet_info.sex}}</div>
+                            </div>
+                    </div>
+                </div>
+                <div id="pet-policy">
+                    <div class="pet-detail-group">
+                        <h4>Policy</h4>
+                        <div class="detail-field"></div>
+                    </div>
+                    <div class="pet-detail-group">
+                        <h4>Status</h4>
+                        <div class="detail-field"></div>
+                    </div>
+                </div>
+                <div id="claims-history">
+                    <h4>Claims history</h4>
+                    <table class="table table-hover table-dark">
+                        <tbody>
+                          <tr *ngFor="let claim of pet_info.claims_history">
+                            <th scope="row">{{claim.date}}</th>
+                            <td>{{claim.reason}}</td>
+                            <td>{{claim.status}}</td>
+                          </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
 </div>

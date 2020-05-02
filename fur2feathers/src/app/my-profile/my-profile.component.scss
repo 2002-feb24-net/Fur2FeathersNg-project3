@@ -22,6 +22,7 @@
     #profile-main {
         width:60vw;
         border: .4em solid black;
+        margin-bottom:2vh;
         padding: 2vh;
         margin-right: 10vw;
         form {
@@ -61,7 +62,7 @@
                 margin-bottom: 1vh;
             }
             .reset-column {
-                margin-right: 1vw;
+                margin-right: 1vw;  
                 display: flex;
                 flex-direction: column;
             }
@@ -69,5 +70,53 @@
 
     }
 
+    #pet-profile {
+        display: flex;
+        flex-direction: column;
+        #pet-img-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 30vw;
+            height: 40vh;
+            background:lightgrey;
+            border:.4em solid black;
+            cursor: pointer;
+        }
+        .detail-field {
+            border: .4em solid black;
+            width: 75%;
+        }
+        #pet-overview {
+            display:flex;
+            flex-direction: row;
+            #pet-details {
+                width:55vw;
+                max-width: 90%;
+                .pet-detail-group {
+                    display: flex;
+                    flex-direction: row;
+                    margin-bottom: 1.5vh;
+                    h4 {
+                        min-width: 5em;
+                    }
+                }
+            }
+        }
+        #pet-policy {
+            display: flex;
+            flex-direction: row;
+            width: 80%;
+            justify-content: space-between;
+        }
+
+        #claims-history {
+            height:20vh;
+            max-height: 30%;
+            table {
+                overflow: scroll;
+            }
+        }
+    }
 
 }

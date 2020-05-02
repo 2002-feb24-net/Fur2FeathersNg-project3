@@ -4,6 +4,7 @@ import {Pet} from '../interfaces/pet';
 import {Customer} from '../interfaces/customer';
 import {Policy} from '../interfaces/policy';
 
+
 @Component({
   selector: 'app-my-profile',
   templateUrl: './my-profile.component.html',
@@ -12,15 +13,18 @@ import {Policy} from '../interfaces/policy';
 export class MyProfileComponent implements OnInit {
 
   constructor() { }
+
+  //profile variables
   name:string = ""
   pet_profiles:Pet[] = [];
   cust_profile:boolean=true;
   pet_profile:boolean=false;
   cust_info:Customer=new Customer("","","","","","","","","","",[]);
-  pet_info:Pet =new Pet("","","",0,"","","",[])
+  pet_info:Pet =new Pet("","","",0,"","","","",[])
   policyHeadElements:string[] = ["Covered Pet(s)","Policy","Policy Status"]
   policies:Policy[] = [];
 
+  //update password form
   confirm_password:string="";
   new_password:string="";
 
@@ -31,7 +35,7 @@ export class MyProfileComponent implements OnInit {
   initDummyData() {
     this.name = "bui";
     for(let i=0;i<5;i++){
-      let obj = new Pet("jon","","",0,"","","",[]);
+      let obj = new Pet("jon"+i,""+i,""+i,0,""+i,""+i,""+i,"",[]);
       this.pet_profiles.push(obj);
     }
     for(let i=0;i<5;i++) {
@@ -53,6 +57,7 @@ export class MyProfileComponent implements OnInit {
     } else {
       this.cust_profile=false;
       this.pet_profile=true;
+      this.pet_info=this.pet_profiles[0];
     }
     console.log(name);
   }
@@ -73,5 +78,18 @@ export class MyProfileComponent implements OnInit {
 
   changePwd() {
 
+  }
+
+  /**
+   * Show form for img url upload
+   */
+  imgUrlPrompt() {
+  }
+
+  /**
+   * Add img to db and display 
+   */
+  submitImg() {
+    event.stopPropagation();
   }
 }

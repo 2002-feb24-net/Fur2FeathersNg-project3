@@ -1,6 +1,6 @@
 export class Claim {
     constructor (
-        public date: string,
+        public date: Date,
         public reason: string,
         public status: string
     ) {}

@@ -1,1 +1,88 @@
-<p>submit-claim works!</p>
+<div class="app-container">
+    <app-side-bar></app-side-bar>
+    <div id="submit-claim-content">
+        <form (ngSubmit)="onSubmit()" #claimForm="ngForm">
+            <!-- pet name -->
+            <select class="form-control" [(ngModel)]="model.pet_name" #pet_name="ngModel"
+                required id="pet_name" name="pet_name" >
+                <option disabled value="" selected>Choose Pet</option>
+                <option *ngFor="let pet of pets" [value]="pet.name">{{pet.name}}</option>
+            </select>
+            <div [hidden]="pet_name.valid||pet_name.pristine" class="alert alert-danger">
+                Pet name is Required
+            </div>
+
+            <!-- vet name -->
+            <input type="text" class="form-control" name="vet_name" id="vet_name" 
+            [(ngModel)]="model.vet_name" required #vet_name="ngModel" 
+            placeholder="Veterinary Clinic / Veterinarian Name">
+            <div [hidden]="vet_name.valid||vet_name.pristine" class="alert alert-danger">
+                Vet name is Required
+            </div>
+
+            <!-- vet street -->
+            <input type="text" class="form-control" name="street" id="street" 
+            [(ngModel)]="model.street" required #street="ngModel" 
+            placeholder="Street">
+            <div [hidden]="street.valid||street.pristine" class="alert alert-danger">
+                Street is Required
+            </div>
+            <!-- vet addr 2 -->
+            <input type="text" class="form-control" name="addr2" id="addr2" 
+            [(ngModel)]="model.addr2" #addr2="ngModel"
+            placeholder="Address Line 2">
+      
+            <div id="city-state-zip">
+                <input type="text" class="form-control" name="city" id="city" 
+                [(ngModel)]="model.city" required #city="ngModel"
+                 placeholder="City">
+                <div [hidden]="city.valid||city.pristine" class="alert alert-danger">
+                    City is Required
+                </div>
+                <input type="text" class="form-control" name="state" id="state" 
+                [(ngModel)]="model.state" required #state="ngModel"
+                placeholder="State">
+                <div [hidden]="state.valid||state.pristine" class="alert alert-danger">
+                    State is Required
+                </div>
+                <input type="text" class="form-control" name="zip" id="zip" 
+                [(ngModel)]="model.zip" required #zip="ngModel"
+                 placeholder="Zip">
+                 <div [hidden]="zip.valid||zip.pristine" class="alert alert-danger">
+                    Zip is Required
+                </div>
+            </div>
+            <div id="date-total">
+                <!-- date -->
+                <input type="date" class="form-control" name="date" id="date" 
+                [(ngModel)]="model.date" required #date="ngModel"
+                 placeholder="Date">
+                 <div [hidden]="date.valid||date.pristine" class="alert alert-danger">
+                    Date is Required
+                </div>
+                 <!-- total -->
+                <input type="number" step="0.01" class="form-control" name="total" id="total" 
+                [(ngModel)]="model.total" required #total="ngModel"
+                 placeholder="Total">
+                 <div [hidden]="total.valid||total.pristine" class="alert alert-danger">
+                    Total is Required
+                </div>
+            </div>
+            <!-- visit reason -->
+            <textarea type="text" class="form-control" name="reason" id="reason" 
+            [(ngModel)]="model.reason"  #reason="ngModel"
+            placeholder="Reason for visit"></textarea>
+          
+            <!-- diag -->
+            <textarea type="text" class="form-control" name="diagnosis" id="diagnosis" 
+            [(ngModel)]="model.diagnosis" #diagnosis="ngModel"
+            placeholder="Diagnosis"></textarea>
+
+            <a style="text-decoration: underline;">Click here to upload scan or photo of treatment summary with payment record</a>
+            <div id="claim-form-buttons">
+                <button class="btn btn-success" (click)="onSubmit()" [disabled]="!claimForm.form.valid">Submit</button>
+                <button class="btn btn-success" (click)="claimForm.resetForm()" >Cancel</button>
+            </div>
+        </form>
+    </div>
+</div>

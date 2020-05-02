@@ -12,4 +12,15 @@ export class NavBarComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  /**
+   * removes Underline and bolds clicked element
+   * @param event Clciked nav-bar element
+   */
+  navClick(event:Event) {
+    let links = document.getElementsByTagName("a");
+    for(let link of Array.from(links)) {
+      link.classList.remove("selected");
+    }
+    (<HTMLInputElement>event.target).classList.add("selected");
+  }
 }

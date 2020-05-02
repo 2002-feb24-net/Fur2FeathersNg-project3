@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import {
   OKTA_CONFIG,
@@ -25,6 +25,8 @@ import { PlanInfoComponent } from './plan-info/plan-info.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { MyProfileComponent } from './my-profile/my-profile.component';
 import { SubmitClaimComponent } from './submit-claim/submit-claim.component';
+import { PurchaseInsuranceComponent } from './purchase-insurance/purchase-insurance.component';
+import { SubmittedComponent } from './submitted/submitted.component';
 
 const config = {
   clientId: '0oaarkz7sehzUbEAk4x6',
@@ -51,13 +53,16 @@ const config = {
     PlanInfoComponent,
     AboutUsComponent,
     MyProfileComponent,
-    SubmitClaimComponent
+    SubmitClaimComponent,
+    PurchaseInsuranceComponent,
+    SubmittedComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     OktaAuthModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     { provide: OKTA_CONFIG, useValue: config },

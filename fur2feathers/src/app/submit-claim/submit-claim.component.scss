@@ -18,8 +18,11 @@
     }
     #city-state-zip, #date-total {
         width: 100%;
-        input {
+        .form-group {
             width: 33%;
+            input {
+                width: 100%;
+            }
         }
         display: flex;
         flex-direction: row;

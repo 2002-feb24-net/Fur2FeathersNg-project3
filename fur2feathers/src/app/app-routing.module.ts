@@ -13,6 +13,8 @@ import { NotfoundComponent } from './notfound/notfound.component';
 import { SubmitClaimComponent } from './submit-claim/submit-claim.component';
 import { MyProfileComponent } from './my-profile/my-profile.component';
 import { AboutUsComponent } from './about-us/about-us.component';
+import { PurchaseInsuranceComponent } from './purchase-insurance/purchase-insurance.component';
+import { SubmittedComponent } from './submitted/submitted.component'
 
 const routes : Routes = [
   { path: '',redirectTo: 'home', pathMatch: 'full' },
@@ -27,6 +29,8 @@ const routes : Routes = [
   { path: 'about-us', component: AboutUsComponent },
   { path: 'submit-claim', component: SubmitClaimComponent},
   { path: 'my-profile', component: MyProfileComponent },
+  { path: 'purchase-insurance', component: PurchaseInsuranceComponent },
+  { path: 'submitted', component: SubmittedComponent},
   // { path: 'implicit/callback' },
   { path: '**', component: NotfoundComponent}
 

@@ -1,0 +1,151 @@
+<div class="app-container">
+    <app-side-bar></app-side-bar>
+    <div id="submit-claim-content">
+        <form (ngSubmit)="onSubmit()" #custProfile="ngForm" >
+            <div class="form-group">
+                <!-- name -->
+                <input type="text" name="name" id="name"  [(ngModel)]="model.name"
+                    #name="ngModel" class="form-control" required placeholder="Name">
+                <div [hidden]="name.valid||name.pristine" class="alert alert-danger">
+                    Name is Required
+                </div>
+            </div>
+            <div class="form-group" id="cust-address">
+                <div id="cust-address-info">
+                    <!-- Addr line 1 -->
+                    <input type="text" name="address1" id="address1"  [(ngModel)]="model.street"
+                    #address1="ngModel" class="form-control" required placeholder="Address line 1"/>
+                    <div [hidden]="address1.valid||address1.pristine" class="alert alert-danger">
+                        Street is Required
+                    </div>
+                    <!-- addre line 2 -->
+                    <input type="text" name="address2" id="address2"  [(ngModel)]="model.addr2"
+                    #address2="ngModel" class="form-control" placeholder="Address line 2">
+                    <div id="city-state-zip">
+                        <!-- city -->
+                        <input style="flex-basis:3" type="text" name="city" id="city"  [(ngModel)]="model.city"
+                        #city="ngModel" class="form-control" placeholder="City">
+                        <div [hidden]="city.valid||city.pristine" class="alert alert-danger">
+                            City is Required
+                        </div>
+                        <!-- state -->
+                        <input type="text" name="state" id="state"  [(ngModel)]="model.state"
+                        #state="ngModel" class="form-control" placeholder="State">
+                        <div [hidden]="state.valid||state.pristine" class="alert alert-danger">
+                            State is Required
+                        </div>
+                        <!-- zip -->
+                        <input type="text" name="zip" id="zip"  [(ngModel)]="model.zip"
+                        #zip="ngModel" class="form-control" placeholder="Zip">
+                        <div [hidden]="zip.valid||zip.pristine" class="alert alert-danger">
+                            Zip is Required
+                        </div>
+                    </div>
+                </div>
+               
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone:</label>
+                <input type="text" name="phone" id="phone"  [(ngModel)]="model.phone"
+                    #phone="ngModel" class="form-control" required placeholder="Phone">
+                <div [hidden]="phone.valid||phone.pristine" class="alert alert-danger">
+                    Phone is Required
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="text" name="email" id="email"  [(ngModel)]="model.email"
+                    #email="ngModel" class="form-control" required placeholder="Email">
+                <div [hidden]="email.valid||email.pristine" class="alert alert-danger">
+                    Email is Required
+                </div>
+            </div>
+
+
+            <div id="reset-pwd">
+                <div id="reset-col-1" class="reset-column">
+                    <input  class="form-control" minlength="12" type="text" name="new_pwd" id="new_pwd" [(ngModel)]="model.password"
+                    #new_pwd="ngModel" placeholder="New Password" required
+                    >
+                </div>
+                <div id="reset-col-2" class="reset-column">
+                    <p>
+                        Password must contain:
+                        Minimum of 12 Characters
+                    </p>
+                    <input class="form-control" minlength="12" type="text" name="confirm_pwd" id="confirm_pwd" [(ngModel)]="confirm_password"
+                    #confirm_pwd="ngModel" placeholder="New Password" required>
+                </div>
+            </div>
+            <div class="form-group" id="mult-check-box">
+                <input class="form-control" id="mult_pets" name="mult_pets" type="checkbox"  
+                #multiple_pets="ngModel" [(ngModel)]="mult_pets">
+                <label for="mult_pets">Please select if insuring multiple pets</label>
+            </div>
+            <form (ngSubmit)="addPet()" #petForm="ngForm" id="pet-form">
+                <!-- pet name -->
+                <div class="form-group">
+                    <input class="form-control" id="pet_name" name="pet_name" type="text"  
+                    #pet_name="ngModel" [(ngModel)]="pet_model.name" placeholder="Pet name">
+                    
+                </div>
+                <div id="pet-spcies" class="pet-row">
+                    <!-- pet type -->
+                    <div class="form-group">
+                        <input class="form-control" id="pet_name" name="pet_name" type="text"  
+                         placeholder="Pet type">
+                        
+                    </div>
+
+                    <!-- pet species -->
+                    <div class="form-group">
+                        <input class="form-control" id="pet_name" name="pet_name" type="text"  
+                        #pet_name="ngModel" [(ngModel)]="pet_model.name" placeholder="Pet Species">
+                        
+                    </div>
+                </div>
+                <div id="pet-age-sex" class="pet-row">
+                    <!-- pet age -->
+                    <div class="form-group">
+                        <input min="0 " oninput="validity.valid||(value='');" class="form-control" id="pet_name" name="pet_name" type="number"  
+                        #pet_name="ngModel" [(ngModel)]="pet_model.name" placeholder="Pet age years">
+                    </div>
+                    <!-- pet age months -->
+                    <div class="form-group">
+                        <input min="0" oninput="validity.valid||(value='');" class="form-control" id="pet_name" name="pet_name" type="number"
+                        placeholder="Pet age months">
+                    </div>
+                    <!-- sex -->
+                    <div class="form-group">
+                        <select class="form-control" id="pet_name" name="pet_name" type="text"  
+                        #pet_name="ngModel" [(ngModel)]="pet_model.name">
+                            <option value="" disabled selected="true">Pet sex</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                            <option value="unspecified">Prefer not to specify/other</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- pre-existing conditions -->
+                <div class="form-group">
+                    <textarea class="form-control" id="pet_name" name="pet_name" type="text"  
+                    #pet_name="ngModel" [(ngModel)]="pet_model.name" placeholder="Preexisting conditions"></textarea>
+                </div>
+                <button style="margin-bottom: 2vh;" *ngIf="mult_pets" type="submit" class="btn btn-success" (click)="addPet();petForm.resetForm()" [disabled]="!petForm.form.valid">Add Pet</button>
+            </form>
+            <p>
+                Account will be created with basic Accident/Illness plan. To upgrade to
+                premium Accident/Illness/Preventative Care plan, please call Customer
+                Service at 888-555-1234 for assistance.
+                <br><br>
+                Account subject to 14 day waiting period before activation.
+            </p>
+            <div id="form-btns">
+                <button type="reset" class="btn btn-success" (click)="custProfile.resetForm()">Clear</button>
+                <button type="submit" class="btn btn-success" (click)="onSubmit()" [disabled]="!custProfile.form.valid">Submit</button>
+            </div>
+        </form>
+            
+    </div>
+</div>

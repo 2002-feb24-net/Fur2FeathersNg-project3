@@ -33,23 +33,29 @@
             placeholder="Address Line 2">
       
             <div id="city-state-zip">
-                <input type="text" class="form-control" name="city" id="city" 
-                [(ngModel)]="model.city" required #city="ngModel"
-                 placeholder="City">
-                <div [hidden]="city.valid||city.pristine" class="alert alert-danger">
-                    City is Required
+                <div class="form-group">
+                    <input type="text" class="form-control" name="city" id="city" 
+                    [(ngModel)]="model.city" required #city="ngModel"
+                    placeholder="City">
+                    <div [hidden]="city.valid||city.pristine" class="alert alert-danger">
+                        City is Required
+                    </div>
                 </div>
-                <input type="text" class="form-control" name="state" id="state" 
-                [(ngModel)]="model.state" required #state="ngModel"
-                placeholder="State">
-                <div [hidden]="state.valid||state.pristine" class="alert alert-danger">
-                    State is Required
+                <div class="form-group">
+                    <input type="text" class="form-control" name="state" id="state" 
+                    [(ngModel)]="model.state" required #state="ngModel"
+                    placeholder="State">
+                    <div [hidden]="state.valid||state.pristine" class="alert alert-danger">
+                        State is Required
+                    </div>
                 </div>
-                <input type="text" class="form-control" name="zip" id="zip" 
-                [(ngModel)]="model.zip" required #zip="ngModel"
-                 placeholder="Zip">
-                 <div [hidden]="zip.valid||zip.pristine" class="alert alert-danger">
-                    Zip is Required
+                <div class="form-group">
+                    <input type="text" class="form-control" name="zip" id="zip" 
+                    [(ngModel)]="model.zip" required #zip="ngModel"
+                    placeholder="Zip">
+                    <div [hidden]="zip.valid||zip.pristine" class="alert alert-danger">
+                        Zip is Required
+                    </div>
                 </div>
             </div>
             <div id="date-total">

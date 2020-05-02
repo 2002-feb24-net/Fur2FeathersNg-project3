@@ -108,9 +108,9 @@
                                 Password must contain:
                                 Minimum of 12 Characters
                             </p>
-                            <input minlength="" type="text" name="confirm_pwd" id="confirm_pwd" [(ngModel)]="confirm_password"
+                            <input minlength="12" type="text" name="confirm_pwd" id="confirm_pwd" [(ngModel)]="confirm_password"
                             #confirm_pwd="ngModel" placeholder="New Password" required>
-                            <button type="submit" class="btn btn-success" (click)="changePwd()" [disabled]="!changePassword.form.valid">Change Passwrod</button>
+                            <button type="submit" class="btn btn-success" (click)="changePwd()" [disabled]="!changePassword.form.valid">Change Password</button>
                         </div>
                     </div>
                 </form>

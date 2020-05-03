@@ -20,4 +20,6 @@ WORKDIR /usr/share/nginx/html
 # remove default nginx page
 RUN rm -rf *
 
+COPY nginx-custom.conf /etc/nginx/conf.d/default.conf
+
 COPY --from=build /app/dist/* ./

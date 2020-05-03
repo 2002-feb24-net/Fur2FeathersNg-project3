@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule,isDevMode } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
@@ -7,6 +7,8 @@ import {
   OKTA_CONFIG,
   OktaAuthModule,
 } from '@okta/okta-angular';
+import { environment } from '../environments/environment';
+
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -33,7 +35,7 @@ const LOCAL_REDIRECT_URI = 'http://localhost:4200/implicit/callback';
 const PROD_REDIRECT_URI = `https://fur2feathers.azurewebsites.net/implicit/callback`;
 
 let REDIRECT_URI ="";
-if(isDevMode()) {
+if(environment.production) {
   REDIRECT_URI = LOCAL_REDIRECT_URI; 
 } else {
   REDIRECT_URI = PROD_REDIRECT_URI;

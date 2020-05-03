@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule,isDevMode } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
@@ -29,13 +29,19 @@ import { PurchaseInsuranceComponent } from './purchase-insurance/purchase-insura
 import { SubmittedComponent } from './submitted/submitted.component';
 const CALLBACK_PATH = '/implicit/callback';
 
-const HOST = window.location.host;
-const REDIRECT_URI = `http://${HOST}${CALLBACK_PATH}`;
+const LOCAL_REDIRECT_URI = 'http://localhost:4200/implicit/callback';
+const PROD_REDIRECT_URI = `https://fur2feathers.azurewebsites.net/implicit/callback`;
 
+let REDIRECT_URI ="";
+if(isDevMode()) {
+  REDIRECT_URI = LOCAL_REDIRECT_URI; 
+} else {
+  REDIRECT_URI = PROD_REDIRECT_URI;
+}
 const config = {
   clientId: '0oaarkz7sehzUbEAk4x6',
   issuer: 'https://dev-514746.okta.com/oauth2/default',
-  redirectUri: 'http://localhost:4200/implicit/callback',
+  redirectUri: REDIRECT_URI,
   scopes: ['openid', 'profile', 'email'],
   pkce: true
 };

@@ -2,39 +2,11 @@
     <app-side-bar></app-side-bar>
     <div id="login-form">
         <h3>Existing Users</h3>
-        <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
-            <!-- email -->
-            <div class="form-group">
-                <label for="mail">E-mail</label>
-                <input type="text" class="form-control" id="mail"
-                    required
-                    [(ngModel)]="email" name="mail"
-                    #mail="ngModel">
-                  
-                <div [hidden]="mail.valid || mail.pristine"
-                    class="alert alert-danger">
-                    E-mail is required
-                </div>
-            </div>
-
-            <!-- usernamename -->
-            <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" class="form-control" id="password"
-                   required
-                   [(ngModel)]="pwd" name="password"
-                   #password="ngModel">
-                <div [hidden]="password.valid || password.pristine"
-                    class="alert alert-danger">
-                    Password is required
-                </div>
-            </div>
-            <p> Forgot password? <a>CLICK HERE</a></p>
-    
-        </form>
+     
         <div id="login-form-buttons">
-            <button type="submit" class="btn btn-success" (click)="onSubmit()" [disabled]="!loginForm.form.valid">Submit</button>
-            <button type="reset" class="btn btn-success" (click)="loginForm.resetForm()">Cancel</button>
+            <button *ngIf="!isAuthenticated" type="submit" class="btn btn-success" (click)="login()">Login with Okta</button>
+            <button *ngIf="isAuthenticated" type="submit" class="btn btn-success" (click)="login()">Login with Okta</button>
+
         </div>
         <a><h2>Click Here to Create a New Account</h2></a>
     </div>

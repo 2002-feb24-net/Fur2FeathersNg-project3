@@ -27,11 +27,15 @@ import { MyProfileComponent } from './my-profile/my-profile.component';
 import { SubmitClaimComponent } from './submit-claim/submit-claim.component';
 import { PurchaseInsuranceComponent } from './purchase-insurance/purchase-insurance.component';
 import { SubmittedComponent } from './submitted/submitted.component';
+const CALLBACK_PATH = '/implicit/callback';
+
+const HOST = window.location.host;
+const REDIRECT_URI = `http://${HOST}${CALLBACK_PATH}`;
 
 const config = {
   clientId: '0oaarkz7sehzUbEAk4x6',
-  issuer: 'https://https://dev-514746.okta.com/oauth2/default',
-  redirectUri: 'http://localhost:8080/implicit/callback',
+  issuer: 'https://dev-514746.okta.com/oauth2/default',
+  redirectUri: 'http://localhost:4200/implicit/callback',
   scopes: ['openid', 'profile', 'email'],
   pkce: true
 };

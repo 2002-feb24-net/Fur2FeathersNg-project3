@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import {Pet} from '../interfaces/pet';
 import {Customer} from '../interfaces/customer';
 import {Policy} from '../interfaces/policy';
+import { OktaAuthService } from '@okta/okta-angular';
 
 
 @Component({
@@ -12,7 +13,7 @@ import {Policy} from '../interfaces/policy';
 })
 export class MyProfileComponent implements OnInit {
 
-  constructor() { }
+  constructor( public oktaAuth:OktaAuthService) { }
 
   //profile variables
   name:string = ""
@@ -28,8 +29,11 @@ export class MyProfileComponent implements OnInit {
   confirm_password:string="";
   new_password:string="";
 
-  ngOnInit(): void {
+  async ngOnInit() {
     this.initDummyData();
+    const userClaims = await this.oktaAuth.getUser();
+    console.log(userClaims)
+    // user name is exposed directly as property
   }
 
   initDummyData() {

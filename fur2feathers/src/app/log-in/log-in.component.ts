@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { OktaAuthService } from '@okta/okta-angular';
 
 @Component({
   selector: 'app-log-in',
@@ -6,15 +7,25 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./log-in.component.scss']
 })
 export class LogInComponent implements OnInit {
-  email: string ="";
-  pwd: string = "";
-  constructor() { }
+  isAuthenticated:boolean;
+  constructor(public oktaAuth:OktaAuthService) {
+    this.oktaAuth.$authenticationState.subscribe(
+      (isAuthenticated:boolean) => this.isAuthenticated=isAuthenticated
+    );
+   }
 
-  ngOnInit(): void {
+  login() {
+    this.oktaAuth.loginRedirect('/my-profile');
+    debugger;
+  }
+  logout() {
+    this.oktaAuth.loginRedirect('/')
+  }
+  async ngOnInit() {
+    this.isAuthenticated = await this.oktaAuth.isAuthenticated();
   }
   onSubmit() {
     console.log("login")
-    console.log(this.email+this.pwd);
   }
 
 }

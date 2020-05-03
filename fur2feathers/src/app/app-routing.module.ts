@@ -15,6 +15,7 @@ import { MyProfileComponent } from './my-profile/my-profile.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { PurchaseInsuranceComponent } from './purchase-insurance/purchase-insurance.component';
 import { SubmittedComponent } from './submitted/submitted.component'
+import { OktaCallbackComponent, OktaAuthGuard } from '@okta/okta-angular';
 
 const routes : Routes = [
   { path: '',redirectTo: 'home', pathMatch: 'full' },
@@ -27,17 +28,17 @@ const routes : Routes = [
   { path: 'buyers-guide', component: BuyersGuideComponent },
   { path: 'blogs', component: BlogsComponent },
   { path: 'about-us', component: AboutUsComponent },
-  { path: 'submit-claim', component: SubmitClaimComponent},
+  { path: 'submit-claim', component: SubmitClaimComponent,canActivate: [OktaAuthGuard]},
   { path: 'my-profile', component: MyProfileComponent },
   { path: 'purchase-insurance', component: PurchaseInsuranceComponent },
   { path: 'submitted', component: SubmittedComponent},
-  // { path: 'implicit/callback' },
+  { path: 'implicit/callback', component:OktaCallbackComponent },
   { path: '**', component: NotfoundComponent}
 
 ]
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes,{useHash:true})],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

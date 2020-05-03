@@ -16,10 +16,9 @@ export class LogInComponent implements OnInit {
 
   login() {
     this.oktaAuth.loginRedirect('/my-profile');
-    debugger;
   }
   logout() {
-    this.oktaAuth.loginRedirect('/')
+    this.oktaAuth.logout('/')
   }
   async ngOnInit() {
     this.isAuthenticated = await this.oktaAuth.isAuthenticated();

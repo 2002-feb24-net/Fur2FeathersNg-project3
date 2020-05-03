@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { OktaAuthService } from '@okta/okta-angular';
 
 @Component({
   selector: 'app-nav-bar',
@@ -6,10 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./nav-bar.component.scss']
 })
 export class NavBarComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
+  
+  constructor(public oktaAuth:OktaAuthService) { }
+  
+  async ngOnInit() {
+    if(await this.oktaAuth.isAuthenticated()){
+      document.getElementById('nav-log-in').innerText="Log out";
+    }
   }
 
   /**

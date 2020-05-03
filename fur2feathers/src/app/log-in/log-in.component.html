@@ -5,7 +5,7 @@
      
         <div id="login-form-buttons">
             <button *ngIf="!isAuthenticated" type="submit" class="btn btn-success" (click)="login()">Login with Okta</button>
-            <button *ngIf="isAuthenticated" type="submit" class="btn btn-success" (click)="login()">Login with Okta</button>
+            <button *ngIf="isAuthenticated" type="submit" class="btn btn-success" (click)="logout()">Logout</button>
 
         </div>
         <a><h2>Click Here to Create a New Account</h2></a>

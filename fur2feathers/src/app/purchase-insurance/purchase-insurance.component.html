@@ -63,18 +63,19 @@
 
 
             <div id="reset-pwd">
+                <p>
+                    Password must contain:
+                    Minimum of 12 Characters
+                </p>
                 <div id="reset-col-1" class="reset-column">
                     <input  class="form-control" minlength="12" type="text" name="new_pwd" id="new_pwd" [(ngModel)]="model.password"
                     #new_pwd="ngModel" placeholder="New Password" required
                     >
                 </div>
                 <div id="reset-col-2" class="reset-column">
-                    <p>
-                        Password must contain:
-                        Minimum of 12 Characters
-                    </p>
+               
                     <input class="form-control" minlength="12" type="text" name="confirm_pwd" id="confirm_pwd" [(ngModel)]="confirm_password"
-                    #confirm_pwd="ngModel" placeholder="New Password" required>
+                    #confirm_pwd="ngModel" placeholder="Confirm Password" required>
                 </div>
             </div>
             <div class="form-group" id="mult-check-box">

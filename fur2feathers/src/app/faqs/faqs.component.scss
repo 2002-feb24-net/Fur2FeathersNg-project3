@@ -9,8 +9,9 @@
     margin-left: 1vw;
  
     .q-and-a {
-        text-align: center;
-        p {
+        width:90%;
+        text-align: left;
+        p,ul {
             border: .3em solid black;
             text-align: left;
             display: none;
@@ -27,4 +28,6 @@
 
 .show-answer {
     display: flex !important;
+    flex-direction: column;
 }
+

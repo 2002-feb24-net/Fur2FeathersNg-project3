@@ -1,8 +1,9 @@
 #about-us-content {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     margin-top: 5vh;
     margin-left: 5vw;
     width: 40vw;
+
 
 }

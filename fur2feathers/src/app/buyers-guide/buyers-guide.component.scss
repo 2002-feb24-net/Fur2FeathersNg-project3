@@ -6,11 +6,12 @@
     width: 80vw;
     margin-left: 2vw;
     #guides {
+        width:95%;
         text-align: left;
         label {
             margin-bottom: 1vh;
         }
-        p {
+        .guide-content {
             border: .4em solid black;
             margin-bottom: 4vh;
         }

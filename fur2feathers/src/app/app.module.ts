@@ -35,7 +35,6 @@ const LOCAL_REDIRECT_URI = 'http://localhost:4200/implicit/callback';
 const PROD_REDIRECT_URI = `https://fur2feathers.azurewebsites.net/implicit/callback`;
 
 let REDIRECT_URI ="";
-debugger;
 if(environment.production) {
   REDIRECT_URI = PROD_REDIRECT_URI; 
 } else {

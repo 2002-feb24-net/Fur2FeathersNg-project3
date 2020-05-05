@@ -1,12 +1,141 @@
 <div class="app-container">
     <app-side-bar></app-side-bar>
     <div id="faqs-content">
-        <div  class="q-and-a" *ngFor="let faq of faqs;let i=index">
-            <label style="cursor: pointer;" (click)="showOrHide($event)">{{i+1}}. {{faq.question}}
+        <div  class="q-and-a" (click)="showOrHide($event)" *ngFor="let faq of faqs;let i=index">
+            <label style="cursor: pointer;" >{{i+1}}. {{faq.question}}
                 <p>{{faq.answer}}</p>
             </label>
-            
         </div>
+        <div  class="q-and-a" (click)="showOrHide($event)" >
+            <label style="cursor: pointer;" >
+                Q: How can I access my pet’s policy information?
+                <p>
+                    A: Convenient online access through the Fur 2 Feathers
+                    Account Home Page gives you free 24/7 access to your 
+                    policy. You have the freedom to check on claims, update information and more -- whenever you choose. Once your register you can:  </p>
+                    <ul>
+                        <li>Submit new claims</li>
+                        <li>Update your contact information</li>
+                        <li>Submit new claims</li>
+                        <li>View your pet’s current coverage</li>
+                        <li>Upload photos for each pet</li>
+                    </ul>
+              
+            </label>
+        </div>
+        <div class="q-and-a" (click)="showOrHide($event)" >
+            <label style="cursor: pointer;" >
+                Q: What is excluded from my policy coverages?
+                <p>A: The Accident/Illness and Preventative Care Plan 
+                    excludes items such as grooming, tax, waste disposal
+                    , boarding, or pre-existing conditions. See policy documents for a complete list of exclusions.</p>
+            </label>
+        </div>
+        <div class="q-and-a" (click)="showOrHide($event)" >
+            <label style="cursor: pointer;" >
+                Q: What is considered a pre-existing condition?
+                <p>
+                    A: A pre-existing condition is any condition that 
+                    began or was treated before the effective date of
+                     your policy, whether or not the condition was 
+                     discovered, diagnosed or treated. Not all pre-existing condition exclusions are permanent. If you have medical records from your veterinarian showing that your pet's condition has been cured for at least 6 months, you may be able to get it covered. Other pre-existing conditions are not curable and will be permanently excluded from coverage.
+                </p>
+            </label>
+        </div>
+        <div class="q-and-a" (click)="showOrHide($event)" >
+            <label style="cursor: pointer;" >
+                Q: How can I retrieve my Nationwide Pet Account Access page Login ID or password?
+                <p>
+                    A: To retrieve your login ID or password, visit the Contact Us page and enter your contact information and the information of one of the pets on your policy in the appropriate fields. Select “Forgot Password/Reset Password” in the email subject and put in your policy number in the email text field. Once you click submit, you should receive an email with your login ID and password within 24 hours.
+                    <br><br>
+                    If you need to get your Login ID and password immediately, please call us at 888-555-1234 during business hours to get account access.
+                </p>
+            </label>
+        </div>
+        <div class="q-and-a" (click)="showOrHide($event)" >
+            <label style="cursor: pointer;" >
+                Q: Does my pet’s policy still apply if I am traveling to another city, state or country?
+                <p>
+                    A: For accident/illness claims, your policy will still cover any veterinarian expenses even if you are in a different state or country as long as the cost does not exceed the policy limits. In that case, you will only be reimbursed for the policy limit.
+                    For preventative care claims, your policy will only cover any expenses if you are in the same state as your address on file. Any claims submitted from a different state or country will not be covered. If you are moving, please call us at 888-555-1234 to notify us of the address change to verify that your policy will cover your pets.
+                </p>
+            </label>
+        </div>
+        <div class="q-and-a" (click)="showOrHide($event)" >
+            <label style="cursor: pointer;" >
+                Q: How does my deductible work?
+                <p>
+                    A: Your deductible is the amount of covered veterinary service expenses that you agree to pay during your policy term before your insurance benefits kick in. Your plan may be accompanied by an annual or per-incident deductible.
+                    <br><br>
+                    Per-incident deductibles are applied on all of our plans. This deductible applies to each unrelated accident or illness per policy term. Only one deductible applied when submitting multiple claims for the same accident or illness. For example, if your pet has an ear infection and requires follow-up visits, only one deductible applies because it is related to the same incident.  
+                </p>
+            </label>
+        </div>
+        <div class="q-and-a" (click)="showOrHide($event)" >
+            <label style="cursor: pointer;" >
+                Q: How to file a claim
+                <p>
+                A: Submit a claim with these simple steps: 1. Go to the website and login to access your pet profile 2. After selecting the pet profile, upload a picture to submit a vet bill for that particular pet 3. You will be refunded as per your plan (deductible), once the claim gets processed in 3-10 days.
+                </p>
+            </label>
+        </div>
+        <div class="q-and-a" (click)="showOrHide($event)" >
+            <label style="cursor: pointer;" >
+                Q: Deceased Pet
+                <p>
+                We understand how difficult it is to lose your fur/feather baby. We would like to offer our deepest sympathies for your loss, and to assist you during this difficult time. And while you will always cherish the memories of your departed pet, we hope we can assist you in opening your heart and home to new memories with a new pet of the same species. Ask a Customer Service representative about our Pet Loss Coverage. 
+                </p>
+            </label>
+        </div>
+        <div class="q-and-a" (click)="showOrHide($event)" >
+            <label style="cursor: pointer;" >
+                Q: Payment Options
+                <p>
+                We offer a secure payment option by calling our customer service number 1.800…………and can be set up for autopay every month from your account.
+                </p>
+            </label>
+        </div>
+        <div class="q-and-a" (click)="showOrHide($event)" >
+            <label style="cursor: pointer;" >
+                Q: Medical records request
+                <p>
+                    Records may be requested to establish a medical history for your pet to help us properly assess your claim for accurate processing.
+                </p>
+            </label>
+        </div>
+        <div class="q-and-a" (click)="showOrHide($event)" >
+            <label style="cursor: pointer;" >
+                Q: Renewals and Plan changes
+                <p>
+                    We’ll send you a renewal email 30 days before the expiration of your current term. Your email will outline the current plan details, coverage and premium information
+                </p>
+            </label>
+        </div>
+        <div class="q-and-a" (click)="showOrHide($event)" >
+            <label style="cursor: pointer;" >
+                Q: Policy Discounts
+                <p>
+                    We offer a 5% discount per additional pets for members enrolling more than one pet. All pets must be within the same household and be insured by the same person. 
+                </p>
+            </label>
+        </div>
+        <div class="q-and-a" (click)="showOrHide($event)" >
+            <label style="cursor: pointer;" >
+                Q: Medical records 
+                <p>
+                    Medical records or treatment records are notes the veterinarian takes at the time of your visit to the vet office. It can be handwritten or computer generated
+                </p>
+            </label>
+        </div>
+        <div class="q-and-a" (click)="showOrHide($event)" >
+            <label style="cursor: pointer;" >
+                Q: Buyer’s Guide
+                <p>
+                    The quick start guide to get familiar with policy & how it works as well as tips about what’s covered and how to file a claim and more.
+                </p>
+            </label>
+        </div>
+        
         <div id="faqs-links" >
             <a>Ready to purchase coverage? Create an account</a>
             <a>Need more information? Request a Quote</a>

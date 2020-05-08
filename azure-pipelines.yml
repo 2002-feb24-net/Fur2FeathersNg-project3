@@ -4,26 +4,29 @@ trigger:
 pr:
 - master
 
-variables:
-  appDir: fur2feathers
-stages: 
+stages:
+
 # - stage: build
-#   jobs: 
+
+#   variables:
+#     nodeVersion: 12.x
+#     appDir: ng-notes-client
+
+#   jobs:
+
 #   - job: build
+
 #     pool:
-#       name: Azure Pipelines
 #       vmImage: ubuntu-latest
-#       demands:
-#       - npm
-#       - java
 
 #     steps:
-#       - task: DockerCompose@0
-#         inputs:
-#           containerregistrytype: 'Container Registry'
-#           dockerRegistryEndpoint: 'jhbui1'
-#           dockerComposeFile: '**/docker-compose.prod.yml'
-#           action: 'Build services'
+
+#     - task: DockerCompose@0
+#       inputs:
+#         containerregistrytype: 'Container Registry'
+#         dockerComposeFile: 'docker-compose.prod.yml'
+#         action: 'Build services'
+#       displayName: docker-compose build
 
 #   - job: test
 
@@ -31,36 +34,44 @@ stages:
 #       vmImage: ubuntu-latest
 
 #     steps:
-    
-#     - task: Npm@1
-#       displayName: 'npm install'
+
+#     - task: NodeTool@0
 #       inputs:
-#         workingDir: ./fur2feathers
-#         verbose: false
-    
+#         versionSpec: '$(nodeVersion)'
+#       displayName: node $(nodeVersion)
+
+#     - script: npm ci
+#       workingDirectory: $(appDir)
+#       displayName: npm install
+
 #     - task: SonarCloudPrepare@1
 #       inputs:
-#         SonarCloud: 'f2f-ng'
+#         SonarCloud: 'sonarcloud-escalonn'
 #         organization: '2002-feb24-net'
-#         scannerMode: CLI
-#         configMode: manual
-#         cliProjectKey: '2002-feb24-net_Fur2FeathersNg-project3'
-#         cliProjectName: 'f2f-ng'
-#         cliSources: $(appDir)/src
+#         scannerMode: 'CLI'
+#         configMode: 'manual'
+#         cliProjectKey: '2002-feb24-net_nick-project2-ng-notes-client'
+#         cliProjectName: 'nick-project2-ng-notes-client'
+#         cliSources: '$(appDir)/src'
 #         extraProperties: |
-#             sonar.coverage.exclusions=**/*.spec.ts
-#             sonar.typescript.lcov.reportPaths=$(appDir)/coverage/$(appDir)/lcov.info
+#           sonar.coverage.exclusions=**/*.spec.ts
+#           sonar.typescript.lcov.reportPaths=$(appDir)/coverage/$(appDir)/lcov.info
+#       displayName: sonarcloud analysis prepare
 
 #     - script: npx ng test --browsers ChromeHeadless --no-watch --code-coverage
-#       workingDirectory: ./fur2feathers
-#       continueOnError: true
+#       workingDirectory: $(appDir)
 #       displayName: ng test
+
+#     - script: npm run lint
+#       workingDirectory: $(appDir)
+#       displayName: ng lint
+
 #     - task: SonarCloudAnalyze@1
 #       displayName: sonarcloud analysis run
 
 #     - task: SonarCloudPublish@1
 #       inputs:
-#           pollingTimeoutSec: '300'
+#         pollingTimeoutSec: '300'
 #       displayName: sonarcloud results build publish
 
 - stage: deploy
@@ -69,7 +80,38 @@ stages:
 
   jobs:
 
+  - job: push
+
+    pool:
+      vmImage: ubuntu-latest
+
+    steps:
+
+    - task: DockerCompose@0
+      displayName: docker-compose build
+      inputs:
+        containerregistrytype: 'Container Registry'
+        dockerComposeFile: 'docker-compose.prod.yml'
+        action: 'Build services'
+
+    - task: DockerCompose@0
+      displayName: docker-compose push
+      inputs:
+        containerregistrytype: 'Container Registry'
+        dockerRegistryEndpoint: 'jhbui1'
+        dockerComposeFile: 'docker-compose.prod.yml'
+        action: 'Push services'
+    
+
+    - task: PublishPipelineArtifact@1
+      displayName: k8s manifest publish
+      inputs:
+        targetPath: 'k8s'
+        artifact: 'k8s'
+        publishLocation: 'pipeline'
+
   - deployment: deploy_dev
+    dependsOn: push
 
     pool:
       vmImage: ubuntu-latest
@@ -81,28 +123,23 @@ stages:
         deploy:
           steps:
 
-          - checkout: self
-
-          - download: none
-
-          - task: DockerCompose@0
+          - task: KubernetesManifest@0
+            displayName: kubectl apply
             inputs:
-              containerregistrytype: 'Container Registry'
-              dockerRegistryEndpoint: 'jhbui1'
-              dockerComposeFile: '**/docker-compose.prod.yml'
-              action: 'Build services'
-            displayName: docker build
-          - task: DockerCompose@0
-            inputs:
-              containerregistrytype: 'Container Registry'
-              dockerRegistryEndpoint: 'jhbui1'
-              dockerComposeFile: '**/docker-compose.prod.yml'
-              action: 'Push services'
-            displayName: docker push
+              action: 'deploy'
+              kubernetesServiceConnection: 'f2f-k8s-backend'
+              namespace: 'default'
+              manifests: '$(Pipeline.Workspace)/k8s/**/*.yml'
 
-          - task: AzureWebAppContainer@1
+          - task: Kubernetes@1
+            displayName: kubectl rollout restart
             inputs:
-              azureSubscription: 'Azure subscription 1 (0331d11f-08e8-4a46-91f1-7c02b4a66c26)'
-              appName: 'fur2feathers'
-              multicontainerConfigFile: 'docker-compose.prod.yml'
-            displayName: app service deploy
+              connectionType: 'Kubernetes Service Connection'
+              kubernetesServiceEndpoint: 'f2f-k8s-backend'
+              namespace: 'default'
+              command: 'rollout'
+              useConfigurationFile: true
+              configuration: '$(Pipeline.Workspace)/k8s/deployment'
+              arguments: 'restart'
+              secretType: 'dockerRegistry'
+              containerRegistryType: 'Azure Container Registry'

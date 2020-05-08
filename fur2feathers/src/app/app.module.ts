@@ -6,6 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import {
   OKTA_CONFIG,
   OktaAuthModule,
+  OktaConfig,
 } from '@okta/okta-angular';
 import { environment } from '../environments/environment';
 
@@ -40,12 +41,15 @@ if(environment.production) {
 } else {
   REDIRECT_URI = LOCAL_REDIRECT_URI;
 }
-const config = {
+const config:OktaConfig = {
   clientId: '0oaarkz7sehzUbEAk4x6',
   issuer: 'https://dev-514746.okta.com/oauth2/default',
   redirectUri: REDIRECT_URI,
   scopes: ['openid', 'profile', 'email'],
-  pkce: true
+  pkce: true,
+  tokenManager: {
+    secure: false
+  }
 };
 
 @NgModule({

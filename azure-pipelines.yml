@@ -143,4 +143,3 @@ stages:
               arguments: 'restart'
               secretType: 'dockerRegistry'
               containerRegistryType: 'Azure Container Registry'
-© 2020 GitHub, Inc.

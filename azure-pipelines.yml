@@ -101,8 +101,15 @@ stages:
         dockerRegistryEndpoint: 'jhbui1'
         dockerComposeFile: 'docker-compose.prod.yml'
         action: 'Push services'
-    
 
+
+    - task: AzureWebAppContainer@1
+      inputs:
+        azureSubscription: 'Azure subscription 1 (0331d11f-08e8-4a46-91f1-7c02b4a66c26)'
+        appName: 'fur2feathers'
+        multicontainerConfigFile: 'docker-compose.prod.yml'
+      displayName: app service deploy
+      
     - task: PublishPipelineArtifact@1
       displayName: k8s manifest publish
       inputs:
@@ -144,9 +151,3 @@ stages:
               secretType: 'dockerRegistry'
               containerRegistryType: 'Azure Container Registry'
 
-          - task: AzureWebAppContainer@1
-            inputs:
-              azureSubscription: 'Azure subscription 1 (0331d11f-08e8-4a46-91f1-7c02b4a66c26)'
-              appName: 'fur2feathers'
-              multicontainerConfigFile: 'docker-compose.prod.yml'
-            displayName: app service deploy

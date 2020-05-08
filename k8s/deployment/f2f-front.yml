@@ -1,0 +1,25 @@
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: f2f-front
+  labels:
+    app: f2f
+    role: front
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: f2f
+      role: front
+  template:
+    metadata:
+      labels:
+        app: f2f
+        role: front
+    spec:
+      containers:
+      - name: f2f-front
+        image: jhbui1/f2f-ng:1.0
+        ports:
+        - containerPort: 80

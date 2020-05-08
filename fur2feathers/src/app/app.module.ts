@@ -49,7 +49,7 @@ const config:OktaConfig = {
   pkce: true,
   tokenManager: {
     secure: false
-  }
+  },
 };
 
 @NgModule({

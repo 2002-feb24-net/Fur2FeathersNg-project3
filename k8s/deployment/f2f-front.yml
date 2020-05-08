@@ -21,5 +21,6 @@ spec:
       containers:
       - name: f2f-front
         image: jhbui1/f2f-ng:1.0
+        imagePullPolicy: always 
         ports:
         - containerPort: 80

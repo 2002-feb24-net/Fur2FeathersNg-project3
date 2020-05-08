@@ -46,7 +46,7 @@ const config:OktaConfig = {
   issuer: 'https://dev-514746.okta.com/oauth2/default',
   redirectUri: REDIRECT_URI,
   scopes: ['openid', 'profile', 'email'],
-  pkce: true,
+  pkce: false,
   tokenManager: {
     secure: false
   },

@@ -2,6 +2,7 @@ import { Claim } from './claim';
 
 export class Pet {
     constructor (
+        public petId: number = -1,
         public name: string = "",
         public species: string = "",
         public color: string = "",
@@ -10,6 +11,8 @@ export class Pet {
         public policy: string = "",
         public status: string = "",
         public img_url: string = "",
+        public customerId: number = -1,
+        public preexisting_conditions: string[] = [],
         public claims_history: Claim[] = []
     ) {}
 }

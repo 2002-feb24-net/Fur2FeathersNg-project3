@@ -6,7 +6,6 @@
     @include medium-screen-landscape {
         flex-direction: row;
     }
-    text-align: center;
 }
 
 #plans-content {
@@ -55,4 +54,11 @@
         font-weight: bold;
     }
     margin-bottom: 3vh;
+}
+
+.plan-info {
+    width: 29.5vw;
+    height: 50vh;
+    margin-left: 1vw;
+    text-align: left;
 }

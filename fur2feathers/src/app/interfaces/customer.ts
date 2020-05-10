@@ -2,6 +2,7 @@ import {Pet} from './pet';
 
 export class Customer {
     constructor (
+        public customerId: number = -1,
         public name: string = "",
         public street: string = "",
         public addr2: string = "",

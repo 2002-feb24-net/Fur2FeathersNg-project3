@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule,HttpClient } from '@angular/common/http';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import {
@@ -24,7 +24,6 @@ import { BlogsComponent } from './blogs/blogs.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { SideBarComponent } from './side-bar/side-bar.component';
 import { DataAccessService } from './data-access.service';
-import { PlanInfoComponent } from './plan-info/plan-info.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { MyProfileComponent } from './my-profile/my-profile.component';
 import { SubmitClaimComponent } from './submit-claim/submit-claim.component';
@@ -46,10 +45,7 @@ const config:OktaConfig = {
   issuer: 'https://dev-514746.okta.com/oauth2/default',
   redirectUri: REDIRECT_URI,
   scopes: ['openid', 'profile', 'email'],
-  pkce: false,
-  tokenManager: {
-    secure: false
-  },
+  pkce: true
 };
 
 @NgModule({
@@ -66,7 +62,6 @@ const config:OktaConfig = {
     BlogsComponent,
     NotfoundComponent,
     SideBarComponent,
-    PlanInfoComponent,
     AboutUsComponent,
     MyProfileComponent,
     SubmitClaimComponent,
@@ -78,7 +73,8 @@ const config:OktaConfig = {
     AppRoutingModule,
     OktaAuthModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule 
   ],
   providers: [
     { provide: OKTA_CONFIG, useValue: config },

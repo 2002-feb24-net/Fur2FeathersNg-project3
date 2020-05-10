@@ -10,6 +10,7 @@ export class PlansComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+  
   }
 
 }

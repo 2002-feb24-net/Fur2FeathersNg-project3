@@ -20,8 +20,8 @@ export class MyProfileComponent implements OnInit {
   pet_profiles:Pet[] = [];
   cust_profile:boolean=true;
   pet_profile:boolean=false;
-  cust_info:Customer=new Customer("","","","","","","","","","",[]);
-  pet_info:Pet =new Pet("","","",0,"","","","",[])
+  cust_info:Customer=new Customer();
+  pet_info:Pet =new Pet()
   policyHeadElements:string[] = ["Covered Pet(s)","Policy","Policy Status"]
   policies:Policy[] = [];
 
@@ -39,7 +39,7 @@ export class MyProfileComponent implements OnInit {
   initDummyData() {
     this.name = "bui";
     for(let i=0;i<5;i++){
-      let obj = new Pet("jon"+i,""+i,""+i,0,""+i,""+i,""+i,"",[]);
+      let obj = new Pet(0,"jon"+i,""+i,""+i,0,""+i,""+i,""+i,"",0,[]);
       this.pet_profiles.push(obj);
     }
     for(let i=0;i<5;i++) {

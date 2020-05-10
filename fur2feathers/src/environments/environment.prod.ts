@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  f2fApiBaseUrl: 'a21d80b4b9e0e455cac78b6313b1027d-1369705032.us-east-2.elb.amazonaws.com'
 };

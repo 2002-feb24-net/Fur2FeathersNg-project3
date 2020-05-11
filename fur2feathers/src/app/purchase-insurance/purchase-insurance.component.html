@@ -72,7 +72,7 @@
                 <!-- pet name -->
                 <div class="form-group">
                     <input class="form-control" id="pet_name" name="pet_name" type="text"  
-                    #pet_name="ngModel" [(ngModel)]="pet_model.name" placeholder="Pet name">
+                    #pet_name="ngModel" [(ngModel)]="pet_model.name" placeholder="Pet name" required>
                     
                 </div>
                 <div id="pet-spcies" class="pet-row">
@@ -86,15 +86,20 @@
                     <!-- pet species -->
                     <div class="form-group">
                         <input class="form-control" id="pet_name" name="pet_name" type="text"  
-                        #pet_name="ngModel" [(ngModel)]="pet_model.species" placeholder="Pet Species">
-                        
+                        #pet_species="ngModel" [(ngModel)]="pet_model.species" placeholder="Pet Species" required>
+                        <div [hidden]="pet_species.valid||pet_species.pristine" class="alert alert-danger">
+                            Species is required, if unknown enter 'unknown'
+                        </div>
                     </div>
                 </div>
                 <div id="pet-age-sex" class="pet-row">
                     <!-- pet age -->
                     <div class="form-group">
                         <input min="0 " oninput="validity.valid||(value='');" class="form-control" id="pet_name" name="pet_name" type="number"  
-                        #pet_name="ngModel" [(ngModel)]="pet_model.age" placeholder="Pet age years">
+                        #pet_age="ngModel" [(ngModel)]="pet_model.age" placeholder="Pet age years">
+                        <div [hidden]="pet_age.valid||pet_age.pristine" class="alert alert-danger">
+                            Age is required, if unknown enter 'unknown'
+                        </div>
                     </div>
                     <!-- pet age months -->
                     <div class="form-group">
@@ -105,7 +110,7 @@
                     <div class="form-group">
                         <select class="form-control" id="pet_name" name="pet_name" type="text"  
                         #pet_name="ngModel" [(ngModel)]="pet_model.sex">
-                            <option value="" disabled selected="true">Pet sex</option>
+                            <option value="" disabled selected="true">Pet's sex</option>
                             <option value="male">Male</option>
                             <option value="female">Female</option>
                             <option value="unspecified">Prefer not to specify/other</option>

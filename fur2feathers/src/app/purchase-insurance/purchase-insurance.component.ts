@@ -29,26 +29,35 @@ export class PurchaseInsuranceComponent implements OnInit {
   }
 
   onSubmit() {
+    event.preventDefault();
+    event.stopPropagation();
+
     console.log("full submit")
     console.log(this.pet_model);
     console.log(this.model);
-    // debugger;
-    this.dal.addCust(this.model).then(
+    this.dal.addCust(this.model).then( //add cust
       x=>{
+        //add current pet
       if(this.pet_model.name!=null){
         this.pet_model.customerId=x.customerId;
-        this.dal.addPet(this.pet_model); //add current pet
+        this.dal.addPet(this.pet_model); 
       }
-      for(let pet of this.pet_queue) { //add all previously added pets
+      //add all previously added pets
+      for(let pet of this.pet_queue) { 
         pet.customerId=x.customerId;
         this.dal.addPet(pet);
       }
+      this.router.navigate(['submitted'])
     })
-    .catch(()=>{
+    .catch((x)=>{
+      console.log(x);
       this.dbUpdateError=true
-      console.log("Purchase insurance failed")
+      alert("Purchase insurance failed")
+      //reset form
+      this.model = new Customer();
+      this.pet_model = new Pet();
     });
-    this.router.navigate(['submitted'])
+    
   }
 /**
  * 

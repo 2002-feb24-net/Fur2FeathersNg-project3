@@ -2,7 +2,7 @@ import { Claim } from './claim';
 
 export class Pet {
     constructor (
-        public petId: number = -1,
+        public petId: number = 0,
         public name: string = "",
         public species: string = "",
         public color: string = "",

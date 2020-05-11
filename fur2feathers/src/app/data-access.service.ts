@@ -20,7 +20,6 @@ export class DataAccessService {
 
   addPet(pet: Pet) {
     console.log(JSON.stringify(pet))
-    debugger;
     return this.http.post<Pet>(this.baseUrl+this.petUrl,JSON.stringify(pet),httpOptions)
       .toPromise();
   }

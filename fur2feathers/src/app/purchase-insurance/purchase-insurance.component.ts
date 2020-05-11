@@ -32,26 +32,37 @@ export class PurchaseInsuranceComponent implements OnInit {
     console.log("full submit")
     console.log(this.pet_model);
     console.log(this.model);
+    // debugger;
     this.dal.addCust(this.model).then(
-      x=>{this.pet_model.customerId=x.customerId;
-      this.dal.addPet(this.pet_model); //add current pet
+      x=>{
+      if(this.pet_model.name!=null){
+        this.pet_model.customerId=x.customerId;
+        this.dal.addPet(this.pet_model); //add current pet
+      }
       for(let pet of this.pet_queue) { //add all previously added pets
         pet.customerId=x.customerId;
         this.dal.addPet(pet);
       }
     })
-    .catch(()=>this.dbUpdateError=true);
+    .catch(()=>{
+      this.dbUpdateError=true
+      console.log("Purchase insurance failed")
+    });
     this.router.navigate(['submitted'])
   }
-
+/**
+ * 
+ */
   addPet() {
+    //prevent multiple addition of same pet
     event.stopPropagation();
     event.preventDefault();
+
     console.log("Addpet")
+    //deep copy of current pet model and 
     let new_pet:Pet = new Pet();
     Object.assign(new_pet,this.pet_model);
-    console.log(new_pet)
     this.pet_queue.push(new_pet);
-    debugger;
+    // debugger;
   }
 }

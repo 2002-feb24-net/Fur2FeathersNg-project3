@@ -16,17 +16,18 @@ const httpOptions = {
 export class DataAccessService {
   private baseUrl = environment.f2fApiBaseUrl;
   private petUrl = '/api/pets'
-  private custUrl = '/cust/pets'
+  private custUrl = '/api/customers'
 
   addPet(pet: Pet) {
     console.log(JSON.stringify(pet))
+    debugger;
     return this.http.post<Pet>(this.baseUrl+this.petUrl,JSON.stringify(pet),httpOptions)
       .toPromise();
   }
 
   addCust(cust:Customer) {
     console.log(JSON.stringify(cust))
-    return this.http.post<Customer>(this.baseUrl+this.petUrl,JSON.stringify(cust),httpOptions)
+    return this.http.post<Customer>(this.baseUrl+this.custUrl,JSON.stringify(cust),httpOptions)
       .toPromise();
   }
 

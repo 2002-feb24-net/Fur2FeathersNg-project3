@@ -21,11 +21,14 @@ export class MyProfileComponent implements OnInit {
       public router:Router
     ) { }
 
-  //profile variables
-  name:string = ""
-  pet_profiles:Pet[] = [];
+  name:string = "";  
+  //type of current profile being displayed
   cust_profile:boolean=true;
   pet_profile:boolean=false;
+
+  //profile variables
+  pet_profiles:Pet[] = [];
+
   cust_info:Customer=new Customer();
   pet_info:Pet =new Pet()
   policyHeadElements:string[] = ["Covered Pet(s)","Policy","Policy Status"]
@@ -36,28 +39,20 @@ export class MyProfileComponent implements OnInit {
   new_password:string="";
 
   async ngOnInit() {
-    this.initDummyData();
-    const userClaims = await this.oktaAuth.getUser();
-    console.log(userClaims)
-    this.DAL.getCust().then(resp=>this.cust_info=resp)
+    this.userClaims = await this.oktaAuth.getUser();
+    this.name = this.userClaims.name;
+    console.log(this.userClaims)
+    this.DAL.getCust().then(resp=>{
+      this.cust_info=resp
+      console.log(resp)
+    })
       .catch((err)=>{
         console.log(err);
-        alert("User with Okta e-mail not found")
+        alert(`User with Okta e-mail ${this.userClaims.email} not found`)
         this.router.navigate(['log-in']);
       });
   }
 
-  initDummyData() {
-    this.name = "bui";
-    for(let i=0;i<5;i++){
-      let obj = new Pet(0,"jon"+i,""+i,""+i,0,""+i,""+i,""+i,"",0,[]);
-      this.pet_profiles.push(obj);
-    }
-    for(let i=0;i<5;i++) {
-      let obj = new Policy("lorem","lorem","lorem");
-      this.policies.push(obj);
-    }
-  }
 
   /**
    * Determines which type of profile to display (cust/pet) then initiates retrieval of corresponding information

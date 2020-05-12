@@ -3,7 +3,7 @@
     <div id="my-profile-content">
         <div id="my-profile-tabs">
             <div class="profile-tab" style="margin-bottom: 2vh;">
-                <p id="customer-tab" (click)="loadProfile($event,name)">{{userClaims?.name}}</p>
+                <p id="customer-tab" (click)="loadProfile($event,name)">{{name}}</p>
             </div>
             <div class="pet-profiles profile-tab" *ngFor="let pet of pet_profiles">
                 <p (click)="loadProfile($event,pet.name)">{{pet.name}}</p>
@@ -92,28 +92,7 @@
                     </table>
                     <p style="color:red">Call Customer Service at 888-555-1234 to add additional pets to an existing account</p>
                 </div>
-                <form (ngSubmit)="changePwd()" #changePassword="ngForm">
-                    <div id="reset-pwd">
-                        <div id="reset-col-1" class="reset-column">
-                            <h3>Reset password</h3>
-                            <input type="text" name="current_pwd" id="current_pwd" [(ngModel)]="cust_info.password"
-                            #current_pwd="ngModel" placeholder="Current Password" required
-                            >
-                            <input minlength="12" type="text" name="new_pwd" id="new_pwd" [(ngModel)]="new_password"
-                            #new_pwd="ngModel" placeholder="New Password" required
-                            >
-                        </div>
-                        <div id="reset-col-2" class="reset-column">
-                            <p>
-                                Password must contain:
-                                Minimum of 12 Characters
-                            </p>
-                            <input minlength="12" type="text" name="confirm_pwd" id="confirm_pwd" [(ngModel)]="confirm_password"
-                            #confirm_pwd="ngModel" placeholder="Confirm Password" required>
-                            <button type="submit" class="btn btn-success" (click)="changePwd()" [disabled]="!changePassword.form.valid">Change Password</button>
-                        </div>
-                    </div>
-                </form>
+                
                 
             </form>
                 <div *ngIf="pet_profile" id="pet-profile">

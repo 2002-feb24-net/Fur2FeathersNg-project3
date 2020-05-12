@@ -26,31 +26,33 @@ export class MyProfileComponent implements OnInit {
   cust_profile:boolean=true;
   pet_profile:boolean=false;
 
-  //profile variables
+  //profile info
   pet_profiles:Pet[] = [];
-
   cust_info:Customer=new Customer();
   pet_info:Pet =new Pet()
+
   policyHeadElements:string[] = ["Covered Pet(s)","Policy","Policy Status"]
   policies:Policy[] = [];
   userClaims: UserClaims=undefined;
-  //update password form
-  confirm_password:string="";
-  new_password:string="";
 
+  //pet image form controller
   async ngOnInit() {
     this.userClaims = await this.oktaAuth.getUser();
     this.name = this.userClaims.name;
     console.log(this.userClaims)
     this.DAL.getCust().then(resp=>{
       this.cust_info=resp
-      console.log(resp)
+      console.log("received cust:"+resp)
+      this.DAL.getCustPets(this.cust_info.customerId).then((resp)=>{
+        this.pet_profiles=resp;
+        console.log(resp)
+      })
     })
       .catch((err)=>{
         console.log(err);
         alert(`User with Okta e-mail ${this.userClaims.email} not found`)
         this.router.navigate(['log-in']);
-      });
+    });
   }
 
 
@@ -67,7 +69,12 @@ export class MyProfileComponent implements OnInit {
     } else {
       this.cust_profile=false;
       this.pet_profile=true;
-      this.pet_info=this.pet_profiles[0];
+      for(let pet of this.pet_profiles){
+        if (pet.name==name) {
+          this.pet_info = pet;
+          break;
+        }
+      }
     }
     console.log(name);
   }
@@ -86,20 +93,12 @@ export class MyProfileComponent implements OnInit {
     }
   }
 
-  changePwd() {
-
-  }
-
-  /**
-   * Show form for img url upload
-   */
-  imgUrlPrompt() {
-  }
 
   /**
    * Add img to db and display 
    */
   submitImg() {
     event.stopPropagation();
+    this.DAL.putPet(this.pet_info.petId,this.pet_info);
   }
 }

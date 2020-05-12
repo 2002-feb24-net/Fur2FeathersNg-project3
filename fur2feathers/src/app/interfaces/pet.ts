@@ -10,7 +10,7 @@ export class Pet {
         public sex: string = "",
         public policy: string = "",
         public status: string = "",
-        public img_url: string = "",
+        public imgUrl: string = "",
         public customerId: number = -1,
         public preexisting_conditions: string[] = [],
         public claims_history: Claim[] = []

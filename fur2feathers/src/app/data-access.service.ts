@@ -19,6 +19,12 @@ export class DataAccessService implements OnInit {
   private petUrl = '/api/pets'
   private custUrl = '/api/customers'
   private accessToken:string ="";
+  
+
+  constructor(
+    private http:HttpClient,
+    private oktaAuth:OktaAuthService  
+    ) { }
 
   async ngOnInit() {
      this.accessToken = await this.oktaAuth.getAccessToken();
@@ -45,9 +51,25 @@ export class DataAccessService implements OnInit {
       })
       .toPromise();
   }
-  constructor(
-    private http:HttpClient,
-    private oktaAuth:OktaAuthService  
-    ) { }
+
+  /**
+   * gets all pets associated with cust id
+   * @param custId 
+   */
+  getCustPets(custId:number) {
+    console.log(`geting pets for custid:${custId}`);
+    return this.http.get<Pet[]>(this.baseUrl+this.petUrl+`/cust/${custId}`)
+      .toPromise();
+  }
+
+  /**
+   * Updates a given pet, used to update image url
+   * @param petId 
+   */
+  putPet(petId:number,pet:Pet) {
+    console.log(JSON.stringify(pet));
+    return this.http.put<Pet>(this.baseUrl+this.petUrl+`/${petId}`,JSON.stringify(pet),httpOptions)
+      .toPromise();
+  }
 
 }

@@ -97,13 +97,13 @@
             </form>
                 <div *ngIf="pet_profile" id="pet-profile">
                     <div id="pet-overview">
-                        <div id="pet-img-container" (click)=imgUrlPrompt()>
-                            <img *ngIf="pet_info.img_url!==''"style="max-width: 100%;max-height: 80%;" id="pet-img" [src]="pet_info.img_url">
-                            <h4 *ngIf="pet_info.img_url==''">Upload an image.</h4>
-                            <form *ngIf="pet_info.img_url==''" (ngSubmit)="submitImg()" #petImg="ngForm">
+                        <div id="pet-img-container" >
+                            <img *ngIf="pet_info.imgUrl!==null"style="max-width: 100%;max-height: 80%;" id="pet-img" [src]="pet_info.imgUrl">
+                            <h4 *ngIf="pet_info.imgUrl==null">Upload an image.</h4>
+                            <form  (ngSubmit)="submitImg()" #petImg="ngForm">
                                 <div class="form-group">
                                     <label for="img-url">Image URL:</label>
-                                    <input type="text" required name="img-url" id="img-url" [(ngModel)]="pet_info.img_url">
+                                    <input type="text" required name="img-url" id="img-url" [(ngModel)]="pet_info.imgUrl">
                                 </div>
                                 <button type="submit" class="btn btn-success" (click)="submitImg()" [disabled]="!petImg.form.valid">Update</button>
                             </form>

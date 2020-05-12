@@ -17,7 +17,7 @@ module.exports = function (config) {
     },
     coverageIstanbulReporter: {
       dir: require('path').join(__dirname, './coverage/fur2feathers'),
-      reports: ['html', 'lcovonly', 'text-summary'],
+      reports: ['html', 'lcov','cobertura'],
       fixWebpackSourcePaths: true
     },
     reporters: ['progress', 'kjhtml'],

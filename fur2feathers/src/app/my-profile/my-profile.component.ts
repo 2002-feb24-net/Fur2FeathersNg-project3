@@ -3,7 +3,9 @@ import { Component, OnInit } from '@angular/core';
 import {Pet} from '../interfaces/pet';
 import {Customer} from '../interfaces/customer';
 import {Policy} from '../interfaces/policy';
-import { OktaAuthService } from '@okta/okta-angular';
+import { OktaAuthService, UserClaims } from '@okta/okta-angular';
+import { DataAccessService } from '../data-access.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -13,7 +15,11 @@ import { OktaAuthService } from '@okta/okta-angular';
 })
 export class MyProfileComponent implements OnInit {
 
-  constructor( public oktaAuth:OktaAuthService) { }
+  constructor( 
+      public oktaAuth:OktaAuthService,
+      public DAL:DataAccessService,
+      public router:Router
+    ) { }
 
   //profile variables
   name:string = ""
@@ -24,7 +30,7 @@ export class MyProfileComponent implements OnInit {
   pet_info:Pet =new Pet()
   policyHeadElements:string[] = ["Covered Pet(s)","Policy","Policy Status"]
   policies:Policy[] = [];
-
+  userClaims: UserClaims=undefined;
   //update password form
   confirm_password:string="";
   new_password:string="";
@@ -33,7 +39,12 @@ export class MyProfileComponent implements OnInit {
     this.initDummyData();
     const userClaims = await this.oktaAuth.getUser();
     console.log(userClaims)
-    // user name is exposed directly as property
+    this.DAL.getCust().then(resp=>this.cust_info=resp)
+      .catch((err)=>{
+        console.log(err);
+        alert("User with Okta e-mail not found")
+        this.router.navigate(['log-in']);
+      });
   }
 
   initDummyData() {

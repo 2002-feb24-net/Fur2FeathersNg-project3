@@ -1,22 +1,28 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import {Pet} from 'src/app/interfaces/pet';
 import {Customer} from 'src/app/interfaces/customer'
+import { OktaAuthService } from '@okta/okta-angular';
 
 const httpOptions = {
   headers: new HttpHeaders({
-    'Content-Type':  'application/json'
+    'Content-Type':  'application/json',
   })
 };
 
 @Injectable({
   providedIn: 'root'
 })
-export class DataAccessService {
+export class DataAccessService implements OnInit {
   private baseUrl = environment.f2fApiBaseUrl;
   private petUrl = '/api/pets'
   private custUrl = '/api/customers'
+  private accessToken:string ="";
+
+  async ngOnInit() {
+     this.accessToken = await this.oktaAuth.getAccessToken();
+  }
 
   addPet(pet: Pet) {
     console.log(JSON.stringify(pet))
@@ -30,6 +36,18 @@ export class DataAccessService {
       .toPromise();
   }
 
-  constructor(private http:HttpClient) { }
+  async getCust() {
+    console.log(`getting customer with email`);
+    return this.http.get<Customer>(this.baseUrl+this.custUrl+`/email`, {
+        headers: {
+          Authorization: 'Bearer ' +await this.oktaAuth.getAccessToken(),
+        }
+      })
+      .toPromise();
+  }
+  constructor(
+    private http:HttpClient,
+    private oktaAuth:OktaAuthService  
+    ) { }
 
 }

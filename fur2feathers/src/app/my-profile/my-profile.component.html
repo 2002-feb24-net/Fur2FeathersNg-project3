@@ -3,7 +3,7 @@
     <div id="my-profile-content">
         <div id="my-profile-tabs">
             <div class="profile-tab" style="margin-bottom: 2vh;">
-                <p id="customer-tab" (click)="loadProfile($event,name)">{{name}}</p>
+                <p id="customer-tab" (click)="loadProfile($event,name)">{{userClaims?.name}}</p>
             </div>
             <div class="pet-profiles profile-tab" *ngFor="let pet of pet_profiles">
                 <p (click)="loadProfile($event,pet.name)">{{pet.name}}</p>
@@ -15,7 +15,7 @@
                     <!-- name -->
                     <label for="name">Name:</label>
                     <input type="text" name="name" id="name" readonly [(ngModel)]="cust_info.name"
-                        #name="ngModel" class="form-control" required placeholder="Name">
+                        #name="ngModel" class="form-control" maxlength="100" required placeholder="Name">
                     <div [hidden]="name.valid||name.pristine" class="alert alert-danger">
                         Name is Required
                     </div>

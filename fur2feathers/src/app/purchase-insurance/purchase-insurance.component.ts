@@ -52,7 +52,7 @@ export class PurchaseInsuranceComponent implements OnInit {
     .catch((x)=>{
       console.log(x);
       this.dbUpdateError=true
-      alert("Purchase insurance failed")
+      alert("Duplicate phone/email")
       //reset form
       this.model = new Customer();
       this.pet_model = new Pet();

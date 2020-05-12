@@ -12,7 +12,7 @@ export class Pet {
         public status: string = "",
         public imgUrl: string = "",
         public customerId: number = -1,
-        public preexisting_conditions: string[] = [],
+        public preexisting_conditions: string = "",
         public claims_history: Claim[] = []
     ) {}
 }

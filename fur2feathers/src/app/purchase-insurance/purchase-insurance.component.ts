@@ -72,6 +72,5 @@ export class PurchaseInsuranceComponent implements OnInit {
     let new_pet:Pet = new Pet();
     Object.assign(new_pet,this.pet_model);
     this.pet_queue.push(new_pet);
-    // debugger;
   }
 }

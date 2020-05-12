@@ -10,7 +10,6 @@ import {
 } from '@okta/okta-angular';
 import { environment } from '../environments/environment';
 
-
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
@@ -76,12 +75,12 @@ const config:OktaConfig = {
     OktaAuthModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule 
+    HttpClientModule,
   ],
   providers: [
     { provide: OKTA_CONFIG, useValue: config },
     DataAccessService,
-    HttpClientModule
+    HttpClientModule,
   ],
   bootstrap: [AppComponent]
 })

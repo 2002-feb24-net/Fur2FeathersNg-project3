@@ -46,7 +46,7 @@ stages:
 
     - task: SonarCloudPrepare@1
       inputs:
-        SonarCloud: 'sonarcloud-escalonn'
+        SonarCloud: 'f2f-ng'
         organization: 'jhbui1'
         scannerMode: 'CLI'
         configMode: 'manual'

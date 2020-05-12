@@ -9,6 +9,9 @@
     @include medium-screen-landscape {
         width: 20vw;
     }
+    :hover {
+        cursor: pointer;
+    }
 }
 
 #column {

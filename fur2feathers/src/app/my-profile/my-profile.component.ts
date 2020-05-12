@@ -42,7 +42,8 @@ export class MyProfileComponent implements OnInit {
     console.log(this.userClaims)
     this.DAL.getCust().then(resp=>{
       this.cust_info=resp
-      console.log("received cust:"+resp)
+      console.log("received cust:")
+      console.log(JSON.stringify(resp));
       this.DAL.getCustPets(this.cust_info.customerId).then((resp)=>{
         this.pet_profiles=resp;
         console.log(resp)

@@ -29,6 +29,7 @@ import { MyProfileComponent } from './my-profile/my-profile.component';
 import { SubmitClaimComponent } from './submit-claim/submit-claim.component';
 import { PurchaseInsuranceComponent } from './purchase-insurance/purchase-insurance.component';
 import { SubmittedComponent } from './submitted/submitted.component';
+import { UnderConstructionComponent } from './under-construction/under-construction.component';
 const CALLBACK_PATH = '/implicit/callback';
 
 const LOCAL_REDIRECT_URI = 'http://localhost:4200/implicit/callback';
@@ -66,7 +67,8 @@ const config:OktaConfig = {
     MyProfileComponent,
     SubmitClaimComponent,
     PurchaseInsuranceComponent,
-    SubmittedComponent
+    SubmittedComponent,
+    UnderConstructionComponent
   ],
   imports: [
     BrowserModule,

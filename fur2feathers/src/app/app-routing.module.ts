@@ -15,7 +15,8 @@ import { MyProfileComponent } from './my-profile/my-profile.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { PurchaseInsuranceComponent } from './purchase-insurance/purchase-insurance.component';
 import { SubmittedComponent } from './submitted/submitted.component'
-import { OktaCallbackComponent, OktaAuthGuard } from '@okta/okta-angular';
+import { OktaCallbackComponent, OktaAuthGuard, OktaAuthService } from '@okta/okta-angular';
+import { UnderConstructionComponent } from './under-construction/under-construction.component';
 
 const routes : Routes = [
   { path: '',redirectTo: 'home', pathMatch: 'full' },
@@ -23,13 +24,13 @@ const routes : Routes = [
   { path: 'faqs', component: FaqsComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'log-in', component: LogInComponent },
-  { path: 'vets', component: VetsComponent },
+  { path: 'vets', component: UnderConstructionComponent },
   { path: 'plans', component: PlansComponent },
   { path: 'buyers-guide', component: BuyersGuideComponent },
-  { path: 'blogs', component: BlogsComponent },
+  { path: 'blogs', component: UnderConstructionComponent },
   { path: 'about-us', component: AboutUsComponent },
-  { path: 'submit-claim', component: SubmitClaimComponent,canActivate: [OktaAuthGuard]},
-  { path: 'my-profile', component: MyProfileComponent },
+  { path: 'submit-claim', component: UnderConstructionComponent},
+  { path: 'my-profile', component: MyProfileComponent,canActivate: [OktaAuthGuard] },
   { path: 'purchase-insurance', component: PurchaseInsuranceComponent },
   { path: 'submitted', component: SubmittedComponent},
   { path: 'implicit/callback', component:OktaCallbackComponent },

@@ -120,7 +120,8 @@
 
                 <!-- pre-existing conditions -->
                 <div class="form-group">
-                    <textarea class="form-control" id="pet_name" name="pet_name" type="text"  
+                    <label for="pet_condtions">Pre-exisiting conditions will be verified with an approved veterinarian.</label>
+                    <textarea class="form-control" id="pet_condtions" name="pet_condtions" type="text"  
                     #pet_name="ngModel" [(ngModel)]="pet_model.preexisting_conditions" placeholder="Pre-existing conditions"></textarea>
                 </div>
                 <button style="margin-bottom: 2vh;" *ngIf="mult_pets" type="submit" class="btn btn-success" (click)="addPet();petForm.resetForm()" [disabled]="!petForm.form.valid">Add Pet</button>

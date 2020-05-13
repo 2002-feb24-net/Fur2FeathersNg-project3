@@ -36,6 +36,7 @@ export class PurchaseInsuranceComponent implements OnInit {
         "Species": pet.species,
         "Color": pet.color,
         "Sex": pet.sex,
+        "Age": pet.age,
         "Preexisting Conditions": pet.preexisting_conditions
     }]})
   }

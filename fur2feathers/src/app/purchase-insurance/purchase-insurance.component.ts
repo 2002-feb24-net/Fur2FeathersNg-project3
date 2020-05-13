@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component} from '@angular/core';
 import { Router } from '@angular/router';
 import axios from "axios";
 
@@ -11,7 +11,7 @@ import { DataAccessService } from '../data-access.service';
   templateUrl: './purchase-insurance.component.html',
   styleUrls: ['./purchase-insurance.component.scss']
 })
-export class PurchaseInsuranceComponent implements OnInit {
+export class PurchaseInsuranceComponent  {
 
   model: Customer = new Customer();
   pet_model: Pet = new Pet();
@@ -26,8 +26,6 @@ export class PurchaseInsuranceComponent implements OnInit {
     public dal: DataAccessService
   ) { }
 
-  ngOnInit(): void {
-  }
 
   petToSheet(pet:Pet) {
     axios.post('https://sheetdb.io/api/v1/vh0d5e21jw3tc',{data:[{
@@ -45,9 +43,6 @@ export class PurchaseInsuranceComponent implements OnInit {
     event.preventDefault();
     event.stopPropagation();
 
-    console.log("full submit")
-    console.log(this.pet_model);
-    console.log(this.model);
     this.dal.addCust(this.model).then( //add cust
       x=>{
       this.model.customerId=x.customerId

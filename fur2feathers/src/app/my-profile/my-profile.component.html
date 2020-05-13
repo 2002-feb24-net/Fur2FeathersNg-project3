@@ -77,6 +77,7 @@
                 <button type="submit" class="btn btn-success" (click)="onSubmit()" [disabled]="!custProfile.form.valid">Update</button>
                 <div id="policies">
                     <table class="table table-hover table-dark">
+                        <caption style="display:none">customer policies</caption>
                         <thead>
                           <tr>
                             <th *ngFor="let head of policyHeadElements" scope="col">{{head}} </th>
@@ -98,7 +99,7 @@
                 <div *ngIf="pet_profile" id="pet-profile">
                     <div id="pet-overview">
                         <div id="pet-img-container" >
-                            <img *ngIf="pet_info.imgUrl!==null"style="max-width: 100%;max-height: 80%;" id="pet-img" [src]="pet_info.imgUrl">
+                            <img *ngIf="pet_info.imgUrl!==null"style="max-width: 100%;max-height: 80%;" id="pet-img" [src]="pet_info.imgUrl" alt="pet profile image">
                             <h4 *ngIf="pet_info.imgUrl==null">Upload an image.</h4>
                             <form  (ngSubmit)="submitImg()" #petImg="ngForm">
                                 <div class="form-group">
@@ -144,6 +145,7 @@
                 <div id="claims-history">
                     <h4>Claims history</h4>
                     <table class="table table-hover table-dark">
+                        <caption style="display:none">Claim history</caption>
                         <tbody>
                           <tr *ngFor="let claim of pet_info.claims_history">
                             <th scope="row">{{claim.date}}</th>

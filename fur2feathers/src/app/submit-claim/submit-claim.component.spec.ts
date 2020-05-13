@@ -1,23 +1,25 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed, getTestBed } from '@angular/core/testing';
 
 import { SubmitClaimComponent } from './submit-claim.component';
+import { FormsModule } from '@angular/forms';
 
 describe('SubmitClaimComponent', () => {
   let component: SubmitClaimComponent;
+  let injector: TestBed;
   let fixture: ComponentFixture<SubmitClaimComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SubmitClaimComponent ]
+      imports: [FormsModule],
+      declarations: [ SubmitClaimComponent ],
+      providers: [SubmitClaimComponent]
     })
     .compileComponents();
+    injector = getTestBed();
+    component = injector.get(SubmitClaimComponent);
   }));
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(SubmitClaimComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+
 
   it('should create', () => {
     expect(component).toBeTruthy();

@@ -1,13 +1,30 @@
-import { TestBed } from '@angular/core/testing';
+import { TestBed, getTestBed, inject } from '@angular/core/testing';
 
 import { DataAccessService } from './data-access.service';
+import { HttpTestingController, HttpClientTestingModule } from '@angular/common/http/testing';
+import { OktaAuthService,OKTA_CONFIG } from '@okta/okta-angular';
 
 describe('DataAccessService', () => {
   let service: DataAccessService;
+  let injector: TestBed;
+  let httpMock: HttpTestingController;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
-    service = TestBed.inject(DataAccessService);
+    const VALID_CONFIG = {
+      clientId: 'foo',
+      issuer: 'https://foo',
+      redirectUri: 'https://foo'
+    };
+    TestBed.configureTestingModule({
+      imports:[HttpClientTestingModule],
+      providers: [
+        DataAccessService,
+        {provide:OKTA_CONFIG,useValue:VALID_CONFIG},
+        OktaAuthService]
+    });
+    injector = getTestBed();
+    service = injector.get(DataAccessService);
+    httpMock = injector.get(HttpTestingController);
   });
 
   it('should be created', () => {

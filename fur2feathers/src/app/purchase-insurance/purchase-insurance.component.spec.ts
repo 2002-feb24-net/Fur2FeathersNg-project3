@@ -1,4 +1,7 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed,getTestBed } from '@angular/core/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { OktaAuthService, OKTA_CONFIG } from '@okta/okta-angular';
 
 import { PurchaseInsuranceComponent } from './purchase-insurance.component';
 
@@ -8,23 +11,28 @@ describe('PurchaseInsuranceComponent', () => {
   let component: PurchaseInsuranceComponent;
   let fixture: ComponentFixture<PurchaseInsuranceComponent>;
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(PurchaseInsuranceComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
-  // beforeEach(async(() => {
-  //   TestBed.configureTestingModule({
-  //     declarations: [ AddResourceFormComponent ],
-  //     imports: [HttpClientTestingModule],
-  //     providers: [AddResourceFormComponent,ResourceFormService,UserService]
-  //   })
-  //   .compileComponents();
-  //   injector = getTestBed();
-  //   component = injector.get(AddResourceFormComponent);
-  //   formService = injector.get(ResourceFormService);
-  //   resService = injector.get(ResourceService);
-  // }));
+  
+
+  beforeEach(async(() => {
+    const VALID_CONFIG = {
+      clientId: 'foo',
+      issuer: 'https://foo',
+      redirectUri: 'https://foo'
+    };
+    TestBed.configureTestingModule({
+      declarations: [ PurchaseInsuranceComponent ],
+      imports: [HttpClientTestingModule,RouterTestingModule],
+      providers: [
+            PurchaseInsuranceComponent,
+            RouterTestingModule,
+            OktaAuthService,
+            {provide:OKTA_CONFIG,useValue: VALID_CONFIG}
+          ]
+    })
+    .compileComponents();
+    injector = getTestBed();
+    component = injector.get(PurchaseInsuranceComponent);
+  }));
 
 
   it('should create', () => {

@@ -42,7 +42,7 @@ export class PurchaseInsuranceComponent  {
   onSubmit() {
     event.preventDefault();
     event.stopPropagation();
-
+    console.log(JSON.stringify(this.model));
     this.dal.addCust(this.model).then( //add cust
       x=>{
       this.model.customerId=x.customerId
@@ -77,7 +77,6 @@ export class PurchaseInsuranceComponent  {
     })
     .catch((x)=>{
       console.log(x);
-      this.dbUpdateError=true
       alert("Duplicate phone/email")
       //reset form
       this.model = new Customer();

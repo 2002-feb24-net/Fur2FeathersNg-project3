@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import axios from "axios";
 
 import { Customer } from '../interfaces/customer';
 import { Pet } from '../interfaces/pet';
@@ -28,6 +29,17 @@ export class PurchaseInsuranceComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  petToSheet(pet:Pet) {
+    axios.post('https://sheetdb.io/api/v1/vh0d5e21jw3tc',{data:[{
+        "Customer ID": pet.customerId,
+        "Name": pet.name,
+        "Species": pet.species,
+        "Color": pet.color,
+        "Sex": pet.sex,
+        "Preexisting Conditions": pet.preexisting_conditions
+    }]})
+  }
+
   onSubmit() {
     event.preventDefault();
     event.stopPropagation();
@@ -37,17 +49,35 @@ export class PurchaseInsuranceComponent implements OnInit {
     console.log(this.model);
     this.dal.addCust(this.model).then( //add cust
       x=>{
+      //send cust to admin google sheet
+      axios.post('https://sheetdb.io/api/v1/8x1860887znut',{data:[{
+        "Customer ID": this.model.customerId,
+        "Name": this.model.name,
+        "Street":this.model.street,
+        "State": this.model.state,
+        "Address line 2":this.model.addr2,
+        "City": this.model.city,
+        "Zip": this.model.zip,
+        "Phone":this.model.phone,
+        "Email": this.model.email,
+      }]})
         //add current pet
+      this.model.customerId=x.customerId
       if(this.pet_model.name!=null){
         this.pet_model.customerId=x.customerId;
-        this.dal.addPet(this.pet_model); 
+        //copy current pet to avoid erasure after form reset
+        let new_pet:Pet = new Pet();
+        Object.assign(new_pet,this.pet_model);
+        this.dal.addPet(this.pet_model).then(x=>this.petToSheet(new_pet)); 
       }
       //add all previously added pets
       for(let pet of this.pet_queue) { 
         pet.customerId=x.customerId;
         this.dal.addPet(pet);
+        this.petToSheet(pet);
       }
       this.router.navigate(['submitted'])
+   
     })
     .catch((x)=>{
       console.log(x);
@@ -58,6 +88,7 @@ export class PurchaseInsuranceComponent implements OnInit {
       this.pet_model = new Pet();
     });
     
+   
   }
 /**
  * 

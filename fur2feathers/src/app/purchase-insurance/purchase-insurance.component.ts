@@ -49,6 +49,7 @@ export class PurchaseInsuranceComponent implements OnInit {
     console.log(this.model);
     this.dal.addCust(this.model).then( //add cust
       x=>{
+      this.model.customerId=x.customerId
       //send cust to admin google sheet
       axios.post('https://sheetdb.io/api/v1/8x1860887znut',{data:[{
         "Customer ID": this.model.customerId,
@@ -62,7 +63,6 @@ export class PurchaseInsuranceComponent implements OnInit {
         "Email": this.model.email,
       }]})
         //add current pet
-      this.model.customerId=x.customerId
       if(this.pet_model.name!=null){
         this.pet_model.customerId=x.customerId;
         //copy current pet to avoid erasure after form reset

@@ -43,11 +43,7 @@ export class DataAccessService implements OnInit {
   }
 
   async getCust() {
-    console.log(`getting customer with email`);
-    let token:string = ""
-
     return this.http.get<Customer>(this.baseUrl+this.custUrl+`/email`, {
-      
         headers: {
           Authorization: 'Bearer ' +await this.oktaAuth.getAccessToken(),
         }

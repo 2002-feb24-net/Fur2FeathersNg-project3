@@ -1,5 +1,13 @@
 # Fur2FeathersNg-project3
 
+## Table of Contetns 
+1. [Overview](#overview)
+2. [Compoennts](#components)
+  - [Component Disambiguation](#component-disambiguation)
+3. [Running the Application](#running-the-application)
+  - [Locally](#locally)
+  - [Cloud Deployment Description](#cloud-deployment-description)
+4. [Third Party Dependencies](#third-party-dependencies)
 ## Overview
 This is a stateless angular application connected to a RESTful ASP .NET Core Web API. The Restful Web API connects to a PostgreSQL database to persist data. The Angular application sends okta login tokens to the Restful API. The okta authentication tokens correspond to okta emails and the API verifies that users are authenticated in order to enable certain actions in the angular front end. For example, users are not able to modify a profile without being logged in through the okta login page on the angular website. In addition, validated submitted forms of registered users are sent automatically to a google readonly spreadsheet through the SheetDB library and AXIOS http client. This google spreadsheet contains only information persisted to the database that is relevant to an insurance administrator; the role of the viewing insurance administrator is to follow up with requests to modify insurance coverage level and increase or decrease coverage of different exotic pets (as in change the pets who are covered).
 

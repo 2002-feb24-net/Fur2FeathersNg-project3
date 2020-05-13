@@ -47,7 +47,7 @@ stages:
     - task: SonarCloudPrepare@1
       inputs:
         SonarCloud: 'f2f-ng'
-        organization: 'jhbui1'
+        organization: '2002-feb24-net'
         scannerMode: 'CLI'
         configMode: 'manual'
         cliProjectKey: '2002-feb24-net_Fur2FeathersNg-project3'

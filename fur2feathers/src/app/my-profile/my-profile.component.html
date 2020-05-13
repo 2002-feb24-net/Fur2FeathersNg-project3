@@ -25,29 +25,29 @@
                     <div id="cust-address-info">
                         <!-- Addr line 1 -->
                         <input type="text" name="address1" id="address1" readonly [(ngModel)]="cust_info.street"
-                        #address1="ngModel" class="form-control" required placeholder="Address line 1"/>
+                        #address1="ngModel" class="form-control editable" required placeholder="Address line 1"/>
                         <div [hidden]="address1.valid||address1.pristine" class="alert alert-danger">
                             Street is Required
                         </div>
                         <!-- addre line 2 -->
                         <input type="text" name="address2" id="address2" readonly [(ngModel)]="cust_info.addr2"
-                        #address2="ngModel" class="form-control" placeholder="Address line 2">
+                        #address2="ngModel" class="form-control editable" placeholder="Address line 2">
                         <div id="city-state-zip">
                             <!-- city -->
                             <input style="flex-basis:3" type="text" name="city" id="city" readonly [(ngModel)]="cust_info.city"
-                            #city="ngModel" class="form-control" placeholder="City">
+                            #city="ngModel" class="form-control editable" placeholder="City">
                             <div [hidden]="city.valid||city.pristine" class="alert alert-danger">
                                 City is Required
                             </div>
                             <!-- state -->
                             <input type="text" name="state" id="state" readonly [(ngModel)]="cust_info.state"
-                            #state="ngModel" class="form-control" placeholder="State">
+                            #state="ngModel" class="form-control editable" placeholder="State">
                             <div [hidden]="state.valid||state.pristine" class="alert alert-danger">
                                 State is Required
                             </div>
                             <!-- zip -->
                             <input type="text" name="zip" id="zip" readonly [(ngModel)]="cust_info.zip"
-                            #zip="ngModel" class="form-control" placeholder="Zip">
+                            #zip="ngModel" class="form-control editable" placeholder="Zip">
                             <div [hidden]="zip.valid||zip.pristine" class="alert alert-danger">
                                 Zip is Required
                             </div>
@@ -59,7 +59,7 @@
                     <!-- phone -->
                     <label for="phone">Phone:</label>
                     <input type="text" name="phone" id="phone" readonly [(ngModel)]="cust_info.phone"
-                        #phone="ngModel" class="form-control" required placeholder="Phone">
+                        #phone="ngModel" class="form-control editable" required placeholder="Phone">
                     <div [hidden]="phone.valid||phone.pristine" class="alert alert-danger">
                         Phone is Required
                     </div>

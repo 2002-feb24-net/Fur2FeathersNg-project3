@@ -38,9 +38,9 @@ export class MyProfileComponent implements OnInit {
   //pet image form controller
   async ngOnInit() {
     this.userClaims = await this.oktaAuth.getUser();
-    this.name = this.userClaims.name;
     console.log(this.userClaims)
     this.DAL.getCust().then(resp=>{
+      this.name=resp.name
       this.cust_info=resp
       console.log("received cust:")
       console.log(JSON.stringify(resp));
@@ -88,7 +88,7 @@ export class MyProfileComponent implements OnInit {
    * Searches dom for all input elements and removes readonly property
    */
   allowEdits() {
-    let inputs = document.getElementsByTagName("input");
+    let inputs = document.getElementsByClassName("editable");
     for(let tag of Array.from(inputs)) {
       tag.removeAttribute("readonly");
     }

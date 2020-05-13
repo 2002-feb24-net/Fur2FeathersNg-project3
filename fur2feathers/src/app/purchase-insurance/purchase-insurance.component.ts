@@ -46,6 +46,7 @@ export class PurchaseInsuranceComponent  {
     this.dal.addCust(this.model).then( //add cust
       x=>{
       this.model.customerId=x.customerId
+      console.log(JSON.stringify(x))
       //send cust to admin google sheet
       axios.post('https://sheetdb.io/api/v1/8x1860887znut',{data:[{
         "Customer ID": this.model.customerId,
@@ -81,6 +82,7 @@ export class PurchaseInsuranceComponent  {
       //reset form
       this.model = new Customer();
       this.pet_model = new Pet();
+      this.pet_queue=[];
     });
     
    
@@ -88,15 +90,24 @@ export class PurchaseInsuranceComponent  {
 /**
  * 
  */
-  addPet() {
-    //prevent multiple addition of same pet
+  addPet(petForm) {
     event.stopPropagation();
     event.preventDefault();
+    
+    if(confirm("Would you like to add a new pet? This pet can not be edited.")) {
+      //prevent multiple addition of same pet
+      event.stopPropagation();
+      event.preventDefault();
 
-    console.log("Addpet")
-    //deep copy of current pet model and 
-    let new_pet:Pet = new Pet();
-    Object.assign(new_pet,this.pet_model);
-    this.pet_queue.push(new_pet);
+      console.log("Addpet")
+      //deep copy of current pet model and 
+      let new_pet:Pet = new Pet();
+      Object.assign(new_pet,this.pet_model);
+      this.pet_queue.push(new_pet);
+      petForm.reset();
+    } else {
+      ;//do nothing
+    }
+
   }
 }

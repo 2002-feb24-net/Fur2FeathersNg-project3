@@ -68,7 +68,7 @@
                 #multiple_pets="ngModel" [(ngModel)]="mult_pets">
                 <label for="mult_pets">Please select if insuring multiple pets</label>
             </div>
-            <form (ngSubmit)="addPet()" #petForm="ngForm" id="pet-form">
+            <form (ngSubmit)="addPet(petForm)" #petForm="ngForm" id="pet-form">
                 <!-- pet name -->
                 <div class="form-group">
                     <input class="form-control" id="pet_name" name="pet_name" type="text"  
@@ -79,14 +79,14 @@
                     <!-- pet type -->
                     <div class="form-group">
                         <input class="form-control" id="pet_name" name="pet_name" type="text"  
-                         placeholder="Pet type">
+                         placeholder="Pet type e.g Hedgehog, Skunk">
                         
                     </div>
 
                     <!-- pet species -->
                     <div class="form-group">
                         <input class="form-control" id="pet_name" name="pet_name" type="text"  
-                        #pet_species="ngModel" [(ngModel)]="pet_model.species" placeholder="Pet Species" required>
+                        #pet_species="ngModel" [(ngModel)]="pet_model.species" placeholder="Pet Species e.g African Pygmy, long-eared" required>
                         <div [hidden]="pet_species.valid||pet_species.pristine" class="alert alert-danger">
                             Species is required, if unknown enter 'unknown'
                         </div>
@@ -124,7 +124,7 @@
                     <textarea class="form-control" id="pet_condtions" name="pet_condtions" type="text"  
                     #pet_name="ngModel" [(ngModel)]="pet_model.preexisting_conditions" placeholder="Pre-existing conditions"></textarea>
                 </div>
-                <button style="margin-bottom: 2vh;" *ngIf="mult_pets" type="submit" class="btn btn-success" (click)="addPet();petForm.resetForm()" [disabled]="!petForm.form.valid">Add Pet</button>
+                <button style="margin-bottom: 2vh;" *ngIf="mult_pets" type="submit" class="btn btn-success" (click)="addPet(petForm);" [disabled]="!petForm.form.valid">Add Pet</button>
             </form>
             <p>
                 Account will be created with basic Accident/Illness plan. To upgrade to

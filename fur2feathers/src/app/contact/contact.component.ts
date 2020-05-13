@@ -2,8 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import axios from "axios";
 
 import {Contact} from '../interfaces/contact';
-import { HttpClient } from '@angular/common/http';
-
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type':  'application/json',
+  })
+};
 @Component({
   selector: 'app-contact',
   templateUrl: './contact.component.html',
@@ -23,6 +27,7 @@ export class ContactComponent implements OnInit {
 
   onSubmit() {
       console.log(this.model);
+      
       axios.post('https://sheetdb.io/api/v1/o96lvdg1uxcd2',{data:[{ 
           Name:this.model.name,
           Phone:this.model.phone,

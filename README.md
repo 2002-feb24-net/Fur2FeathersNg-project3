@@ -52,6 +52,13 @@ This angular website transpiles from TypeScript into the ECMAScript 2015 version
 
 In order to start the application one can deploy the kubernetes manifests. After pushed changes to master (directly or through pulled pull requests), the pipeline automatically pushes a docker image of the angular application to jhbui1's dockerhub repository. This image is used by a kubernetes service (which can be built from our provided manifests) to deploy the application (and provide scaling through a kubernetes loadbalancer). Currently the angular application is deployed to the Amazon Kubernetes service. The manifests also reference the url of the backend Restful API and PostgreSQL database which are also deployed in Amazon's Kubernetes service. Note that this application uses okta, which requires an https address for the Restful API that verifies authentication or is sent okta tokens from this angular application. A CORS policy, configured in the k8s manifest of the Restful API allows cross origin resource requests from this angular application.
 
+Our PostgreSQL database and our Restful ASP .NET Web API have their source code here:
+https://github.com/2002-feb24-net/Fur2FeathersAPI-project3
+Both the database and the Restful API are deployable locally in their own containers. The database and API applications run separately from each other in their own docker containers. They also have their own individual logs which can be accessed through a cli kubectl command that references an application's label and the project's "app" name. These labels and "app" name are defined in the kubernetes manifest yml files. These logs are helpful for debugging exceptions and successful requests.
+
+kubectl logs -f -l app=f2f,role=api
+kubectl logs -f -l app=f2f,role=db
+
 ## Third Party Dependencies
 
 ### Axios

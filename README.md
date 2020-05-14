@@ -34,7 +34,7 @@ The pages this angular application includes are:
 11. Submit A Claim
 12. Log in (Okta log in embedded in an angular component on our website)
 
-### Component Diasambiguation
+### Component Disambiguation
 
 Most of these pages contain a sidebar with contact information and hours of contact. Additionally there is a navbar that links to different "pages" in our angular application/website. Routing to non-existent pages returns our 404 page not found angular page. Under construction pages include contact information and a brief message about coming availability of these features.
 

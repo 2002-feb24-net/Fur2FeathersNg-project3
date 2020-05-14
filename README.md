@@ -1,6 +1,6 @@
 # Fur2FeathersNg-project3
 
-## Table of Contetns 
+## Table of Contents
 1. [Overview](#overview)
 2. [Compoennts](#components)
     - [Component Disambiguation](#component-disambiguation)

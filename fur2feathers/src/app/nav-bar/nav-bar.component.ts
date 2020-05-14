@@ -9,8 +9,13 @@ import { OktaAuthService } from '@okta/okta-angular';
 export class NavBarComponent implements OnInit {
   
   constructor(public oktaAuth:OktaAuthService) { }
-  
+  /**
+   * sets log in text in nav bar to log out, invoked for each page change
+   */
   async ngOnInit() {
+    /**
+     * sets log in text in nav bar to log out, invoked for each page change
+     */
     if(await this.oktaAuth.isAuthenticated()){
       document.getElementById('nav-log-in').innerText="Log out";
     }

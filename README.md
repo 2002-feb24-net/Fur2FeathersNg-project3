@@ -52,7 +52,7 @@ In order to start the application one can deploy the kubernetes manifests. After
 ## Third Party Dependencies
 
 ### Axios
-Axios was used to send posts to sheetDB as its defaults matched the expecations of the API. There was no documentation for data the SheetDB api would accept and it refused data from Angular's HttpClient. It is reccomended to remove the dependency on Axios throught solving this problem or creating a new Admin dashboard as it is a redundant dependency.
+Axios was used to send posts to sheetDB as its defaults matched the expecations of the API. There was no documentation for data the SheetDB api would accept and it refused data from Angular's HttpClient. It is reccomended to remove the dependency on Axios after solving this problem or creating a new Admin dashboard as it is a redundant and non-standard dependency.
 
 ### Okta
 Okta was used to verify the user's identity, it currently requires manual addition of users requesting to register to an access list.

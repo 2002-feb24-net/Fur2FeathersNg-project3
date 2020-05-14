@@ -64,6 +64,13 @@
     <code>src/app/nav-bar/nav-bar.component.ts</code>
 </p>
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Component Decorator</p>
+
+    </p>
 
 
     <p class="comment">
@@ -175,7 +182,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="9" class="link-to-prism">src/app/nav-bar/nav-bar.component.ts:9</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/app/nav-bar/nav-bar.component.ts:12</a></div>
                             </td>
                         </tr>
 
@@ -189,6 +196,7 @@
                                                 <td>Name</td>
                                                     <td>Type</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -203,6 +211,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <code><p>Used to determine if user is logged-in in onInit hook</p>
+</code>
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -244,8 +256,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="28"
-                            class="link-to-prism">src/app/nav-bar/nav-bar.component.ts:28</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="33"
+                            class="link-to-prism">src/app/nav-bar/nav-bar.component.ts:33</a></div>
                 </td>
             </tr>
 
@@ -323,16 +335,14 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="15"
-                            class="link-to-prism">src/app/nav-bar/nav-bar.component.ts:15</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="20"
+                            class="link-to-prism">src/app/nav-bar/nav-bar.component.ts:20</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>sets log in text in nav bar to log out, invoked for each page change</p>
-</div>
 
                     <div class="io-description">
                         <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
@@ -369,10 +379,15 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/app/nav-bar/nav-bar.component.ts:11</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/nav-bar/nav-bar.component.ts:18</a></div>
                             </td>
                         </tr>
 
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description">Used to determine if user is logged-in in onInit hook</div>
+                    </td>
+                </tr>
 
             </tbody>
         </table>
@@ -385,6 +400,9 @@
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
 import { OktaAuthService } from &#x27;@okta/okta-angular&#x27;;
 
+/**
+ * Component Decorator
+ */
 @Component({
   selector: &#x27;app-nav-bar&#x27;,
   templateUrl: &#x27;./nav-bar.component.html&#x27;,
@@ -392,10 +410,12 @@ import { OktaAuthService } from &#x27;@okta/okta-angular&#x27;;
 })
 export class NavBarComponent implements OnInit {
   
-  constructor(public oktaAuth:OktaAuthService) { }
   /**
-   * sets log in text in nav bar to log out, invoked for each page change
+   * 
+   * @param oktaAuth Used to determine if user is logged-in in onInit hook
    */
+  constructor(public oktaAuth:OktaAuthService) { }
+
   async ngOnInit() {
     /**
      * sets log in text in nav bar to log out, invoked for each page change

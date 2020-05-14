@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { OktaAuthService } from '@okta/okta-angular';
 
+/**
+ * Component Decorator
+ */
 @Component({
   selector: 'app-nav-bar',
   templateUrl: './nav-bar.component.html',
@@ -8,10 +11,12 @@ import { OktaAuthService } from '@okta/okta-angular';
 })
 export class NavBarComponent implements OnInit {
   
-  constructor(public oktaAuth:OktaAuthService) { }
   /**
-   * sets log in text in nav bar to log out, invoked for each page change
+   * 
+   * @param oktaAuth Used to determine if user is logged-in in onInit hook
    */
+  constructor(public oktaAuth:OktaAuthService) { }
+
   async ngOnInit() {
     /**
      * sets log in text in nav bar to log out, invoked for each page change

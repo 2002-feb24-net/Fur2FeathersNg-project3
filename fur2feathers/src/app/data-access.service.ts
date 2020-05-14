@@ -21,27 +21,47 @@ export class DataAccessService implements OnInit {
   private accessToken:string ="";
   
 
+  /**
+   * 
+   * @param http used for posting and getting from backend api
+   * @param oktaAuth used to retrieve authenticated user's token to access restricted api endpoints
+   */
   constructor(
     private http:HttpClient,
     private oktaAuth:OktaAuthService  
     ) { }
 
+  /**
+   * gets access token of logged in user, not currently in use since methods may run before await has completed.
+   */
   async ngOnInit() {
      this.accessToken = await this.oktaAuth.getAccessToken();
   }
 
+  /**
+   * adds a pet
+   * @param pet pet to be added
+   */
   addPet(pet: Pet) {
     console.log(JSON.stringify(pet))
     return this.http.post<Pet>(this.baseUrl+this.petUrl,JSON.stringify(pet),httpOptions)
       .toPromise();
   }
 
+  /**
+   * adds a cust
+   * @param cust cust to be added
+   */
   addCust(cust:Customer) {
     console.log(JSON.stringify(cust))
     return this.http.post<Customer>(this.baseUrl+this.custUrl,JSON.stringify(cust),httpOptions)
       .toPromise();
   }
 
+  /**
+   * Function is async in order to retrieve access token,
+   * uses the access token to access a protected endpoint which retrieves customer information based on logged in user's email
+   */
   async getCust() {
     return this.http.get<Customer>(this.baseUrl+this.custUrl+`/email`, {
         headers: {

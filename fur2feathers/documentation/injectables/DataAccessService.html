@@ -159,6 +159,7 @@
                                                 <td>Name</td>
                                                     <td>Type</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -173,6 +174,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <code><p>used for posting and getting from backend api</p>
+</code>
+                                                        </td>
                                                 </tr>
                                                 <tr>
                                                         <td>oktaAuth</td>
@@ -185,6 +190,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <code><p>used to retrieve authenticated user&#39;s token to access restricted api endpoints</p>
+</code>
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -222,14 +231,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="39"
-                            class="link-to-prism">src/app/data-access.service.ts:39</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="55"
+                            class="link-to-prism">src/app/data-access.service.ts:55</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>adds a cust</p>
+</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -239,6 +250,7 @@
                                     <td>Name</td>
                                     <td>Type</td>
                                     <td>Optional</td>
+                                    <td>Description</td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -253,6 +265,10 @@
                                     </td>
 
 
+                                    <td>
+                                        <p>cust to be added</p>
+
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -292,14 +308,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="33"
-                            class="link-to-prism">src/app/data-access.service.ts:33</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="45"
+                            class="link-to-prism">src/app/data-access.service.ts:45</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>adds a pet</p>
+</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -309,6 +327,7 @@
                                     <td>Name</td>
                                     <td>Type</td>
                                     <td>Optional</td>
+                                    <td>Description</td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -323,6 +342,10 @@
                                     </td>
 
 
+                                    <td>
+                                        <p>pet to be added</p>
+
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -364,14 +387,17 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="45"
-                            class="link-to-prism">src/app/data-access.service.ts:45</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="65"
+                            class="link-to-prism">src/app/data-access.service.ts:65</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Function is async in order to retrieve access token,
+uses the access token to access a protected endpoint which retrieves customer information based on logged in user&#39;s email</p>
+</div>
 
                     <div class="io-description">
                         <b>Returns : </b>    <code>{}</code>
@@ -403,8 +429,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="58"
-                            class="link-to-prism">src/app/data-access.service.ts:58</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="78"
+                            class="link-to-prism">src/app/data-access.service.ts:78</a></div>
                 </td>
             </tr>
 
@@ -477,14 +503,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="29"
-                            class="link-to-prism">src/app/data-access.service.ts:29</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="37"
+                            class="link-to-prism">src/app/data-access.service.ts:37</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>gets access token of logged in user, not currently in use since methods may run before await has completed.</p>
+</div>
 
                     <div class="io-description">
                         <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
@@ -516,8 +544,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="68"
-                            class="link-to-prism">src/app/data-access.service.ts:68</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="88"
+                            class="link-to-prism">src/app/data-access.service.ts:88</a></div>
                 </td>
             </tr>
 
@@ -739,27 +767,47 @@ export class DataAccessService implements OnInit {
   private accessToken:string &#x3D;&quot;&quot;;
   
 
+  /**
+   * 
+   * @param http used for posting and getting from backend api
+   * @param oktaAuth used to retrieve authenticated user&#x27;s token to access restricted api endpoints
+   */
   constructor(
     private http:HttpClient,
     private oktaAuth:OktaAuthService  
     ) { }
 
+  /**
+   * gets access token of logged in user, not currently in use since methods may run before await has completed.
+   */
   async ngOnInit() {
      this.accessToken &#x3D; await this.oktaAuth.getAccessToken();
   }
 
+  /**
+   * adds a pet
+   * @param pet pet to be added
+   */
   addPet(pet: Pet) {
     console.log(JSON.stringify(pet))
     return this.http.post&lt;Pet&gt;(this.baseUrl+this.petUrl,JSON.stringify(pet),httpOptions)
       .toPromise();
   }
 
+  /**
+   * adds a cust
+   * @param cust cust to be added
+   */
   addCust(cust:Customer) {
     console.log(JSON.stringify(cust))
     return this.http.post&lt;Customer&gt;(this.baseUrl+this.custUrl,JSON.stringify(cust),httpOptions)
       .toPromise();
   }
 
+  /**
+   * Function is async in order to retrieve access token,
+   * uses the access token to access a protected endpoint which retrieves customer information based on logged in user&#x27;s email
+   */
   async getCust() {
     return this.http.get&lt;Customer&gt;(this.baseUrl+this.custUrl+&#x60;/email&#x60;, {
         headers: {

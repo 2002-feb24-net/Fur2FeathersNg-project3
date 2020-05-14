@@ -2,7 +2,7 @@
 
 ## Table of Contents
 1. [Overview](#overview)
-2. [Compoennts](#components)
+2. [Components](#components)
     - [Component Disambiguation](#component-disambiguation)
 3. [Running the Application](#running-the-application)
     - [Locally](#locally)
@@ -43,7 +43,7 @@ This angular website transpiles from TypeScript into the ECMAScript 2015 version
   1. [Install npm](https://www.npmjs.com/get-npm)
   2. In the directory containting the projects package.json, run npm install
   3. Run npm start
-  4. The application will be served on  http://localhost:4200/ by default
+  4. The application will be served on http://localhost:4200/ by default
 
 ### Cloud Deployment Description
 

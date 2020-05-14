@@ -43,7 +43,7 @@ This angular website transpiles from TypeScript into the ECMAScript 2015 version
   1. [Install npm](https://www.npmjs.com/get-npm)
   2. In the directory containting the projects package.json, run npm install
   3. Run npm start
-  4. The application will be served on localhost://4200 by default
+  4. The application will be served on  http://localhost:4200/ by default
 
 ### Cloud Deployment Description
 
@@ -61,5 +61,5 @@ Okta was used to verify the user's identity, it currently requires manual additi
 ## Additional Documentation
 For additional documentation including route diagrams, available services and modules, etc.: 
 1. Execute npm run compodoc
-2. navigate to (http://localhost:8080/)
+2. navigate to http://localhost:8080/
 
